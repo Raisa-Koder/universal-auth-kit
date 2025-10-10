@@ -1,0 +1,41 @@
+{
+  "name": "universal-auth-kit",
+  "version": "0.1.0",
+  "description": "Framework-agnostic, strategy-based authentication library supporting JWT, sessions, OAuth, 2FA, and more",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --watch",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'"
+  },
+  "keywords": [
+    "authentication",
+    "auth",
+    "typescript",
+    "jwt",
+    "oauth",
+    "session",
+    "2fa",
+    "magic-link",
+    "universal"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "tsup": "^7.2.0",
+    "vitest": "^1.5.1",
+    "eslint": "^8.40.0",
+    "prettier": "^3.10.0"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0"
+  }
+}
