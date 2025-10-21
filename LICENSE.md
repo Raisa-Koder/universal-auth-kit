@@ -1,11 +1,16 @@
-Copyright (c) 2024 Albert Hernandez
+Copyright (c) 2025 Raisa-Koder
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, and modify the Software for personal or educational purposes only,
+subject to the following conditions:
+
+📜 License Notice
+
+This project is proprietary and not open-source.  
+Reproduction, redistribution, or use of this Software or any substantial
+portion thereof for commercial or public purposes is prohibited
+without explicit written permission from the author.
 
 The above copyright notice and this permission notice shall be included in
 all copies or substantial portions of the Software.
