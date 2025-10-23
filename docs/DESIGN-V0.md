@@ -8,6 +8,43 @@ The core of the library is composed of:
 - **Strategies:** Concrete implementations of capabilities, e.g., `JWTEmailPasswordStrategy`.
 - **AuthKernel:** A lightweight registry and delegator that holds strategy instances and exposes their capabilities in a type-safe way.
 
+### Folder & File Structure
+
+```text
+src/
+├── auth/
+│   ├── kernel/
+│   │   ├── AuthKernel.ts           # Generic strategy container
+│   │   └── StrategyMap.ts          # Strategy type definitions
+│   ├── capabilities/
+│   │   ├── core/
+│   │   │   ├── LoginCapability.ts
+│   │   │   ├── ValidateCapability.ts
+│   │   │   └── IssueCapability.ts
+│   │   ├── token/
+│   │   │   ├── RefreshCapability.ts
+│   │   │   ├── RevokeCapability.ts
+│   │   │   └── InvalidateCapability.ts
+│   │   └── otp/
+│   │       ├── VerifyOTPCapability.ts
+│   │       └── ResendOTPCapability.ts
+│   ├── credentials/
+│   │   ├── JWTCredentials.ts
+│   │   ├── GoogleOAuthCredentials.ts
+│   │   └── MagicLinkCredentials.ts
+│   ├── strategies/
+│   │   ├── JWTEmailPasswordStrategy.ts
+│   │   ├── GoogleOAuthStrategy.ts
+│   │   └── MagicLinkStrategy.ts
+│   ├── adapter/
+│   │   ├── AuthAdapter.ts          # Interface
+│   │   └── PrismaAuthAdapter.ts    # Implementation
+│   ├── facade/
+│   │   └── AuthFacade.ts
+│   └── factory/
+│       └── AuthKernelFactory.ts
+```
+
 ### Capability Interfaces
 
 ```ts
