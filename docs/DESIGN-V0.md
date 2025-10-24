@@ -103,38 +103,48 @@ or
 ```ts
 // kernel.ts
 import { AuthAdapter } from "./adapters/auth-adapter";
-import { JWTEmailPasswordStrategy } from "./strategies/jwt-strategy";
-import { GoogleOAuthStrategy } from "./strategies/google-strategy";
+import { JWTEmailPasswordStrategy, JWTConfig } from "./strategies/jwt-strategy";
+import { GoogleOAuthStrategy, GoogleConfig } from "./strategies/google-strategy";
 
 const builtInStrategies = {
   jwt: JWTEmailPasswordStrategy,
   google: GoogleOAuthStrategy,
-};
+} as const;
 
 type StrategyName = keyof typeof builtInStrategies;
 
-export class AuthKernel<TUser> {
-  private instances = new Map<string, any>();
+// Map each strategy to its config type
+type StrategyConfigMap = {
+  jwt: JWTConfig;
+  google: GoogleConfig;
+};
+
+// Map each strategy to its instance type
+type StrategyInstanceMap = {
+  [K in StrategyName]: InstanceType<typeof builtInStrategies[K]>;
+};
+
+export class AuthKernel<TUser, TStrategies extends Partial<StrategyConfigMap>> {
+  private instances = new Map<StrategyName, any>();
 
   constructor(
     private adapter: AuthAdapter<TUser>,
-    private strategies: Record<StrategyName, any>
+    private strategies: TStrategies
   ) {}
 
-  getStrategy(name: StrategyName) {
-    // return cached instance if exists
-    if (this.instances.has(name)) {
-      return this.instances.get(name);
+  getStrategy<N extends keyof TStrategies>(name: N): StrategyInstanceMap[N] {
+    if (this.instances.has(name as StrategyName)) {
+      return this.instances.get(name as StrategyName);
     }
 
-    const StrategyClass = builtInStrategies[name];
-    const config = this.strategies[name];
-
+    const StrategyClass = builtInStrategies[name as StrategyName];
     if (!StrategyClass) throw new Error(`Unknown strategy: ${name}`);
+
+    const config = this.strategies[name];
     if (!config) throw new Error(`No config provided for strategy: ${name}`);
 
     const instance = new StrategyClass(this.adapter, config);
-    this.instances.set(name, instance);
+    this.instances.set(name as StrategyName, instance);
     return instance;
   }
 }
