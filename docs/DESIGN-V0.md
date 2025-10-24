@@ -98,6 +98,48 @@ class AuthKernel<S extends StrategyMap> {
   }
 }
 ```
+or
+
+```ts
+// kernel.ts
+import { AuthAdapter } from "./adapters/auth-adapter";
+import { JWTEmailPasswordStrategy } from "./strategies/jwt-strategy";
+import { GoogleOAuthStrategy } from "./strategies/google-strategy";
+
+const builtInStrategies = {
+  jwt: JWTEmailPasswordStrategy,
+  google: GoogleOAuthStrategy,
+};
+
+type StrategyName = keyof typeof builtInStrategies;
+
+export class AuthKernel<TUser> {
+  private instances = new Map<string, any>();
+
+  constructor(
+    private adapter: AuthAdapter<TUser>,
+    private strategies: Record<StrategyName, any>
+  ) {}
+
+  getStrategy(name: StrategyName) {
+    // return cached instance if exists
+    if (this.instances.has(name)) {
+      return this.instances.get(name);
+    }
+
+    const StrategyClass = builtInStrategies[name];
+    const config = this.strategies[name];
+
+    if (!StrategyClass) throw new Error(`Unknown strategy: ${name}`);
+    if (!config) throw new Error(`No config provided for strategy: ${name}`);
+
+    const instance = new StrategyClass(this.adapter, config);
+    this.instances.set(name, instance);
+    return instance;
+  }
+}
+```
+
 ### Usage Example
 ```ts
 const kernel = new AuthKernel({
@@ -108,6 +150,17 @@ const kernel = new AuthKernel({
 const jwtStrategy = kernel.getStrategy('jwt');
 const loginResult = await jwtStrategy.login({ email: 'user@example.com', password: 'password' });
 ```
+or
+```ts
+const kernel = new AuthKernel(new AuthAdapter(), {
+  jwt: { secret: "supersecret", algorithm: "HS256", payload: {} },
+  google: { clientId: "xxx", clientSecret: "yyy", redirectUri: "http://localhost:3000/callback" },
+});
+
+const jwtStrategy = kernel.getStrategy("jwt");
+await jwtStrategy.login({ email: "user@example.com", password: "password" });
+```
+
 ### Benefits of This Design
 
 - **No runtime if/else checks:** The type system ensures correct usage.
