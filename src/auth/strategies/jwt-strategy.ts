@@ -3,6 +3,8 @@ import { TokenIssuer } from "../capabilities/core/issue-capability";
 import { CredentialLogin } from "../capabilities/core/login-capability";
 import { TokenValidator } from "../capabilities/core/validate-capability";
 import { JwtCredentials } from "../credentials/jwt-credentials";
+import { JwtConfig } from "../configs/jwt.config";
+import jwt from "jsonwebtoken";
 
 
 export class JWTEmailPasswordStrategy<TUser>
@@ -13,7 +15,7 @@ export class JWTEmailPasswordStrategy<TUser>
 {
   constructor(
     private adapter: AuthAdapter<TUser>,
-    private jwtSecret: string
+    private config: JwtConfig
   ) {}
 
   async login({identifier, password}: JwtCredentials) {
@@ -30,9 +32,16 @@ export class JWTEmailPasswordStrategy<TUser>
 
   async validateToken(token: string) {
     // Verify JWT, return TUser
+   
   }
 
   generateToken(user: TUser) {
     // Sign JWT with user info
+    return jwt.sign(
+      this.config.payload ?? user,this.config.secret,
+      {exp: Math.floor(Date.now() / 1000) + this.config.expiresIn,
+      algorithm: this.config.algorithm
+      }
+    );
   }
 }
