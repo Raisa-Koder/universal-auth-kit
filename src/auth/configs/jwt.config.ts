@@ -9,4 +9,5 @@ export interface JwtConfig {
   secret: string;             
   expiresIn: string;          
   algorithm: JwtAlgorithm;
+  payload?: Record<string, unknown>;
 }
