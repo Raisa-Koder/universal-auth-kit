@@ -27,8 +27,10 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    */
   async validateToken(token: string): Promise<TPayload> {
     try {
+      const algorithm = this.config.algorithm ?? "HS256";
+      
       const decoded = jwt.verify(token, this.config.secret, {
-        algorithms: [this.config.algorithm],
+        algorithms: [algorithm],
       });
 
       // jsonwebtoken can return either a string or an object
@@ -53,9 +55,12 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    */
   generateToken(payload: TPayload): string {
     try {
+       const algorithm = this.config.algorithm ?? "HS256";
+       const expiresIn = this.config.expiresIn ?? "1h"; 
+
       const token = jwt.sign(payload, this.config.secret, {
-        algorithm: this.config.algorithm,
-        expiresIn: this.config.expiresIn,
+        algorithm,
+        expiresIn,
       });
       return token;
     } catch (err: any) {
