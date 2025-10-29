@@ -32,3 +32,9 @@ export class JWTUnknownError extends JWTError {
     super("Unknown JWT error", "JWT_UNKNOWN", cause);
   }
 }
+
+export class InvalidCredentialsError extends JWTError {
+  constructor(cause?: Error) {
+    super("Invalid credentials", "INVALID_CREDENTIALS", cause);
+  }
+}
