@@ -10,3 +10,14 @@ export interface JwtConfig {
   expiresIn?: string;          
   algorithm?: JwtAlgorithm;
 }
+
+
+export interface RefreshTokenPayload {
+  sub: string;         
+  type: "refresh";      
+}
+
+export interface StatelessRefreshableJWTConfig extends JwtConfig {    
+  refreshSecret: string;
+  refreshExpiresIn?: string;   
+}
