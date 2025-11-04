@@ -1,20 +1,24 @@
-export type JwtAlgorithm =
-  | 'HS256' | 'HS384' | 'HS512'
-  | 'RS256' | 'RS384' | 'RS512'
-  | 'ES256' | 'ES384' | 'ES512'
-  | 'PS256' | 'PS384' | 'PS512'
-  | 'none';
+// src/auth/jwt/types.ts
+import type { SignOptions, Algorithm } from "jsonwebtoken";
+import { z } from "zod";
 
-export interface JwtConfig {
-  secret: string;             
-  expiresIn?: string;          
-  algorithm?: JwtAlgorithm;
-}
+export const AllowedAlgorithms: Algorithm[] = ["RS256", "ES256"];
 
+export const JwtConfigSchema = z.object({
+  secret: z.string().min(1, "JWT secret is required"),
+  algorithm: z.enum(["RS256", "ES256"]).default("RS256"),
+  issuer: z.string().optional(),
+  audience: z.string().optional(),
+  expiresIn: z.union([z.string(), z.number()]).default("1h"),
+  refreshSecret: z.string().optional(),
+  refreshExpiresIn: z.string().optional(),
+});
+
+export type JwtConfig = z.infer<typeof JwtConfigSchema>;
 
 export interface RefreshTokenPayload {
-  sub: string;         
-  type: "refresh";      
+  sub: string;
+  type: "refresh";
 }
 
 export interface StatelessRefreshableJWTConfig extends JwtConfig {    

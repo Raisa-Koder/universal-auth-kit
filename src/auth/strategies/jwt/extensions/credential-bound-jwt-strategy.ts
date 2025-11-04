@@ -1,9 +1,9 @@
-import { StatelessJWTStrategy } from "../base/StatelessJWTStrategy";
 import { JwtPayload } from "jsonwebtoken";
-import { JwtConfig } from "../jwt.config";
-import { UserAdpter } from "../../adapters/user-adapter";
+import { StatelessJWTStrategy } from "../base/stateless-jwt-strategy";
+import { CredentialAuthenticator } from "@/src/auth/capabilities/core/authenticate-capability";
+import { JwtConfig } from "../base/types";
+import { UserAdapter } from "@/src/auth/adapters/user-adapter";
 import { InvalidCredentialsError } from "../base/errors";
-import { CredentialAuthenticator } from "../../capabilities/core/authenticate-capability";
 
 /**
  * Credential-bound JWT strategy that delegates authentication to a user adapter.
@@ -46,7 +46,7 @@ export class CredentialBoundJWTStrategy<
     const tokenPayload: Partial<TPayload> = {
       ...user,
       ...runtimeClaims,
-    };
+    } as unknown as Partial<TPayload>;
 
     const token = this.generateToken(tokenPayload as TPayload);
 
