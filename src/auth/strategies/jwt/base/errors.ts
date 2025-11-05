@@ -15,6 +15,13 @@ export class JWTInvalidError extends JWTError {
   }
 }
 
+export class JWTConfigError extends JWTError {
+  constructor(cause?: Error) {
+    super("Invalid JWT configuration", "JWT_CONFIG_INVALID", cause);
+    this.name = "JWTConfigError";
+  }
+}
+
 export class JWTExpiredError extends JWTError {
   constructor(cause?: Error) {
     super("JWT token has expired", "JWT_EXPIRED", cause);

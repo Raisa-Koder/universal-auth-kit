@@ -11,6 +11,9 @@ export default defineConfig({
     passWithNoTests: true,
     include: ["tests/unit/**/*.test.ts"],
     env: loadEnv("test", process.cwd(), ""),
+    reporters: ["verbose"],
+    silent: false,
+    clearMocks: true,
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],

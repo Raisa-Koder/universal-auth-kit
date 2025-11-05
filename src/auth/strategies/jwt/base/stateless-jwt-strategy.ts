@@ -1,8 +1,7 @@
-// src/auth/jwt/stateless-strategy.ts
-
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
 import { JwtConfigSchema, JwtConfig } from "./types";
 import {
+  JWTConfigError,
   JWTExpiredError,
   JWTInvalidError,
   JWTSignError,
@@ -30,26 +29,25 @@ import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability
  * @typeParam TPayload - The expected shape of the token payload.
  */
 export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
-  implements TokenIssuer<TPayload>, TokenValidator<TPayload>
-{
-    /**
-   * The validated JWT configuration accessible to subclasses.
-   *
-   * @protected
-   * @remarks
-   * Using `protected` instead of `private` allows derived strategies
-   * (such as refreshable or hybrid JWT strategies) to reuse core
-   * configuration values like {@link JwtConfig.algorithm | algorithm},
-   * {@link JwtConfig.secret | secret}, and {@link JwtConfig.expiresIn | expiresIn}
-   * without exposing them publicly.
-   *
-   * Why:
-   * - Enables subclass extensions (e.g., refresh token support) to
-   *   maintain consistency with the base configuration.
-   * - Prevents code duplication and keeps configuration handling centralized.
-   * - Keeps configuration hidden from external consumers while allowing
-   *   controlled access within the inheritance hierarchy.
-   */
+  implements TokenIssuer<TPayload>, TokenValidator<TPayload> {
+  /**
+ * The validated JWT configuration accessible to subclasses.
+ *
+ * @protected
+ * @remarks
+ * Using `protected` instead of `private` allows derived strategies
+ * (such as refreshable or hybrid JWT strategies) to reuse core
+ * configuration values like {@link JwtConfig.algorithm | algorithm},
+ * {@link JwtConfig.secret | secret}, and {@link JwtConfig.expiresIn | expiresIn}
+ * without exposing them publicly.
+ *
+ * Why:
+ * - Enables subclass extensions (e.g., refresh token support) to
+ *   maintain consistency with the base configuration.
+ * - Prevents code duplication and keeps configuration handling centralized.
+ * - Keeps configuration hidden from external consumers while allowing
+ *   controlled access within the inheritance hierarchy.
+ */
   protected config: JwtConfig;
 
   /**
@@ -67,7 +65,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
   constructor(rawConfig: unknown) {
     const parsed = JwtConfigSchema.safeParse(rawConfig);
     if (!parsed.success) {
-      throw new Error(`Invalid JWT config: ${parsed.error.message}`);
+      throw new JWTConfigError(parsed.error);
     }
     this.config = parsed.data;
   }
@@ -89,8 +87,8 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
     try {
       const options: SignOptions = {
         algorithm: this.config.algorithm,
-        issuer: this.config.issuer,
-        audience: this.config.audience,
+        ...(this.config.issuer && { issuer: this.config.issuer }),
+        ...(this.config.audience && { audience: this.config.audience }),
         expiresIn: this.config.expiresIn as SignOptions["expiresIn"]
       };
       return jwt.sign(payload, this.config.secret, options);
@@ -125,9 +123,6 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
         audience: this.config.audience,
       });
 
-      if (typeof decoded === "string") {
-        return { raw: decoded } as unknown as TPayload;
-      }
       return decoded as TPayload;
     } catch (err: any) {
       if (err.name === "TokenExpiredError") throw new JWTExpiredError(err);
