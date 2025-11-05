@@ -25,3 +25,14 @@ export interface StatelessRefreshableJWTConfig extends JwtConfig {
   refreshSecret: string;
   refreshExpiresIn?: string;   
 }
+
+export interface CredentialBoundJWTCredentials {
+  identifier: string;
+  password: string;
+  runtimeClaims?: Record<string, any>;
+}
+
+export interface CredentialBoundJWTResult<TUser extends { id: string; [key: string]: any }> {
+  token: string;
+  user: TUser;
+}

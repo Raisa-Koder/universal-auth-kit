@@ -9,8 +9,8 @@ export function generateRS256KeyPair(): { publicKey: PublicKey; privateKey: Priv
         modulusLength: 2048,
     });
     return {
-        publicKey: publicKey.export({ type: "spki", format: "pem" }),   
-        privateKey: privateKey.export({ type: "pkcs8", format: "pem" }), 
+        publicKey: publicKey.export({ type: "spki", format: "pem" }).toString(),   
+        privateKey: privateKey.export({ type: "pkcs8", format: "pem" }).toString(), 
     };
 }
 
