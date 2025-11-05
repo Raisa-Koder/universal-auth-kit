@@ -98,6 +98,58 @@ class AuthKernel<S extends StrategyMap> {
   }
 }
 ```
+or
+
+```ts
+// kernel.ts
+import { AuthAdapter } from "./adapters/auth-adapter";
+import { JWTEmailPasswordStrategy, JWTConfig } from "./strategies/jwt-strategy";
+import { GoogleOAuthStrategy, GoogleConfig } from "./strategies/google-strategy";
+
+const builtInStrategies = {
+  jwt: JWTEmailPasswordStrategy,
+  google: GoogleOAuthStrategy,
+} as const;
+
+type StrategyName = keyof typeof builtInStrategies;
+
+// Map each strategy to its config type
+type StrategyConfigMap = {
+  jwt: JWTConfig;
+  google: GoogleConfig;
+};
+
+// Map each strategy to its instance type
+type StrategyInstanceMap = {
+  [K in StrategyName]: InstanceType<typeof builtInStrategies[K]>;
+};
+
+export class AuthKernel<TUser, TStrategies extends Partial<StrategyConfigMap>> {
+  private instances = new Map<StrategyName, any>();
+
+  constructor(
+    private adapter: AuthAdapter<TUser>,
+    private strategies: TStrategies
+  ) {}
+
+  getStrategy<N extends keyof TStrategies>(name: N): StrategyInstanceMap[N] {
+    if (this.instances.has(name as StrategyName)) {
+      return this.instances.get(name as StrategyName);
+    }
+
+    const StrategyClass = builtInStrategies[name as StrategyName];
+    if (!StrategyClass) throw new Error(`Unknown strategy: ${name}`);
+
+    const config = this.strategies[name];
+    if (!config) throw new Error(`No config provided for strategy: ${name}`);
+
+    const instance = new StrategyClass(this.adapter, config);
+    this.instances.set(name as StrategyName, instance);
+    return instance;
+  }
+}
+```
+
 ### Usage Example
 ```ts
 const kernel = new AuthKernel({
@@ -108,6 +160,17 @@ const kernel = new AuthKernel({
 const jwtStrategy = kernel.getStrategy('jwt');
 const loginResult = await jwtStrategy.login({ email: 'user@example.com', password: 'password' });
 ```
+or
+```ts
+const kernel = new AuthKernel(new AuthAdapter(), {
+  jwt: { secret: "supersecret", algorithm: "HS256", payload: {} },
+  google: { clientId: "xxx", clientSecret: "yyy", redirectUri: "http://localhost:3000/callback" },
+});
+
+const jwtStrategy = kernel.getStrategy("jwt");
+await jwtStrategy.login({ email: "user@example.com", password: "password" });
+```
+
 ### Benefits of This Design
 
 - **No runtime if/else checks:** The type system ensures correct usage.

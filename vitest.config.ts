@@ -6,12 +6,13 @@ export default defineConfig({
   test: {
     root: "./",
     globals: true,
+    environment: "node",
     isolate: false,
     passWithNoTests: true,
     include: ["tests/unit/**/*.test.ts"],
     env: loadEnv("test", process.cwd(), ""),
     coverage: {
-      provider: "istanbul",
+      provider: "v8",
       reporter: ["text", "json", "html"],
       reportsDirectory: "coverage/unit",
       include: ["src/**/*.ts"],
