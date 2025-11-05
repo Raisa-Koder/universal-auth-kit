@@ -1,1 +1,2 @@
-npx lint-staged
+# Run lint-staged safely via pnpm or npx
+pnpm exec lint-staged || npx lint-staged

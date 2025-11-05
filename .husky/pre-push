@@ -1,3 +1,4 @@
+# Build, check output, then test before push
 node --run build
 find dist/index.js
 node --run test
