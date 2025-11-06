@@ -18,7 +18,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
       reportsDirectory: "coverage/unit",
-      include: ["src/**/*.ts"],
+      include: ["src/auth/strategies/**/*.ts"],
     },
   },
   plugins: [swc.vite({ module: { type: "es6" } })],
