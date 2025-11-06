@@ -94,7 +94,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PAT_TOKEN }}
+          github-token: ${{ secrets.PAT_TOKEN }} # <- use your PAT here
           script: |
             const lines = process.env.LINES;
             const functions = process.env.FUNCTIONS;
