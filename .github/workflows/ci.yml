@@ -45,24 +45,22 @@ jobs:
       - name: Run tests
         run: pnpm test:unit
 
-      - name: Extract coverage summary
-        id: coverage
+      - name: Check coverage thresholds
         run: |
-          if [ -f coverage/coverage-summary.json ]; then
-            LINES=$(jq -r '.total.lines.pct' coverage/coverage-summary.json)
-            FUNCTIONS=$(jq -r '.total.functions.pct' coverage/coverage-summary.json)
-            STATEMENTS=$(jq -r '.total.statements.pct' coverage/coverage-summary.json)
-            BRANCHES=$(jq -r '.total.branches.pct' coverage/coverage-summary.json)
+          if [ -f coverage/unit/coverage-summary.json ]; then
+            MIN_LINES=90
+            LINES=$(jq '.total.lines.pct' coverage/unit/coverage-summary.json)
+            echo "Lines coverage: $LINES%"
+          if (( $(echo "$LINES < $MIN_LINES" | bc -l) )); then
+            echo "❌ Lines coverage too low: $LINES% < $MIN_LINES%"
+            exit 1
           else
-            LINES=0
-            FUNCTIONS=0
-            STATEMENTS=0
-            BRANCHES=0
+            echo "✅ Coverage OK"
           fi
-          echo "lines=$LINES" >> $GITHUB_OUTPUT
-          echo "functions=$FUNCTIONS" >> $GITHUB_OUTPUT
-          echo "statements=$STATEMENTS" >> $GITHUB_OUTPUT
-          echo "branches=$BRANCHES" >> $GITHUB_OUTPUT
+          else
+           echo "❌ No coverage summary file found at coverage/unit/coverage-summary.json"
+           exit 1
+          fi
 
       - name: Check coverage thresholds
         run: |
