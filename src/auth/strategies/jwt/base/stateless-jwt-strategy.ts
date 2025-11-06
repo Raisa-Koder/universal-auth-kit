@@ -118,6 +118,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * to mitigate downgrade or replay attacks. Tokens represented as
    * strings are supported for legacy compatibility.
    */
+  /* eslint-disable @typescript-eslint/require-await */
   async validateToken(token: string): Promise<TPayload> {
     try {
       const decoded = jwt.verify(token, this.config.secret, {

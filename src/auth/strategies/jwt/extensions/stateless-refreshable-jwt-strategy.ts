@@ -98,6 +98,7 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
    * @returns Decoded refresh token payload
    * @throws JWTExpiredError | JWTInvalidError
    */
+  /* eslint-disable @typescript-eslint/require-await */
   async validateRefreshToken(token: string): Promise<RefreshTokenPayload> {
     try {
       const decoded = jwt.verify(token, this.refreshSecret, {
