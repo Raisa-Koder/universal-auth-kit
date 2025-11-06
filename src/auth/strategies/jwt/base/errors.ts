@@ -1,8 +1,8 @@
 export class JWTError extends Error {
   constructor(
     message: string,
-    public code: string = "JWT_ERROR",
-    public cause?: Error
+    public code = "JWT_ERROR",
+    public cause?: Error,
   ) {
     super(message);
     this.name = new.target.name;
@@ -12,6 +12,13 @@ export class JWTError extends Error {
 export class JWTInvalidError extends JWTError {
   constructor(cause?: Error) {
     super("Invalid JWT token", "JWT_INVALID", cause);
+  }
+}
+
+export class JWTConfigError extends JWTError {
+  constructor(cause?: Error) {
+    super("Invalid JWT configuration", "JWT_CONFIG_INVALID", cause);
+    this.name = "JWTConfigError";
   }
 }
 

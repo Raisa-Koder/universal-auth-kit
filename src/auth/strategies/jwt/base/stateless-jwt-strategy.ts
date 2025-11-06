@@ -1,15 +1,16 @@
-// src/auth/jwt/stateless-strategy.ts
-
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
-import { JwtConfigSchema, JwtConfig } from "./types";
+
+import { TokenIssuer } from "@/src/auth/capabilities/core/issue-capability";
+import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability";
+
 import {
+  JWTConfigError,
   JWTExpiredError,
   JWTInvalidError,
   JWTSignError,
   JWTUnknownError,
 } from "./errors";
-import { TokenIssuer } from "@/src/auth/capabilities/core/issue-capability";
-import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability";
+import { JwtConfig, JwtConfigSchema } from "./types";
 
 /**
  * Provides a stateless JSON Web Token (JWT) authentication mechanism.
@@ -32,7 +33,7 @@ import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability
 export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
   implements TokenIssuer<TPayload>, TokenValidator<TPayload>
 {
-    /**
+  /**
    * The validated JWT configuration accessible to subclasses.
    *
    * @protected
@@ -67,7 +68,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
   constructor(rawConfig: unknown) {
     const parsed = JwtConfigSchema.safeParse(rawConfig);
     if (!parsed.success) {
-      throw new Error(`Invalid JWT config: ${parsed.error.message}`);
+      throw new JWTConfigError(parsed.error);
     }
     this.config = parsed.data;
   }
@@ -89,13 +90,13 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
     try {
       const options: SignOptions = {
         algorithm: this.config.algorithm,
-        issuer: this.config.issuer,
-        audience: this.config.audience,
-        expiresIn: this.config.expiresIn as SignOptions["expiresIn"]
+        ...(this.config.issuer && { issuer: this.config.issuer }),
+        ...(this.config.audience && { audience: this.config.audience }),
+        expiresIn: this.config.expiresIn as SignOptions["expiresIn"],
       };
       return jwt.sign(payload, this.config.secret, options);
-    } catch (err: any) {
-      throw new JWTSignError(err);
+    } catch (error: unknown) {
+      throw new JWTSignError(error as Error | undefined);
     }
   }
 
@@ -117,6 +118,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * to mitigate downgrade or replay attacks. Tokens represented as
    * strings are supported for legacy compatibility.
    */
+  /* eslint-disable @typescript-eslint/require-await */
   async validateToken(token: string): Promise<TPayload> {
     try {
       const decoded = jwt.verify(token, this.config.secret, {
@@ -125,14 +127,14 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
         audience: this.config.audience,
       });
 
-      if (typeof decoded === "string") {
-        return { raw: decoded } as unknown as TPayload;
-      }
       return decoded as TPayload;
-    } catch (err: any) {
-      if (err.name === "TokenExpiredError") throw new JWTExpiredError(err);
-      if (err.name === "JsonWebTokenError") throw new JWTInvalidError(err);
-      throw new JWTUnknownError(err);
+    } catch (error: unknown) {
+      if (error instanceof jwt.TokenExpiredError)
+        throw new JWTExpiredError(error);
+      if (error instanceof jwt.JsonWebTokenError)
+        throw new JWTInvalidError(error);
+      if (error instanceof Error) throw new JWTUnknownError(error);
+      throw error;
     }
   }
 }
