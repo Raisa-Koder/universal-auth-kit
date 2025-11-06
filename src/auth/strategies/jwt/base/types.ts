@@ -9,9 +9,7 @@ export const JwtConfigSchema = z.object({
   algorithm: z.enum(["RS256", "ES256"]).default("RS256"),
   issuer: z.string().optional(),
   audience: z.string().optional(),
-  expiresIn: z.union([z.string(), z.number()]).default("1h"),
-  refreshSecret: z.string().optional(),
-  refreshExpiresIn: z.string().optional(),
+  expiresIn: z.union([z.string(), z.number()]).default("30s"),
 });
 
 export type JwtConfig = z.infer<typeof JwtConfigSchema>;
@@ -21,10 +19,12 @@ export interface RefreshTokenPayload {
   type: "refresh";
 }
 
-export interface StatelessRefreshableJWTConfig extends JwtConfig {    
-  refreshSecret: string;
-  refreshExpiresIn?: string;   
-}
+export const StatelessRefreshableJWTConfigSchema = JwtConfigSchema.extend({
+  refreshSecret: z.string().min(1, "Refresh secret is required"),
+  refreshExpiresIn: z.string().optional().default("1h"),
+});
+
+export type StatelessRefreshableJWTConfig = z.infer<typeof StatelessRefreshableJWTConfigSchema>;
 
 export interface CredentialBoundJWTCredentials {
   identifier: string;

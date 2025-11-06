@@ -2,8 +2,10 @@ import jwt, { JwtPayload, Secret, SignOptions } from "jsonwebtoken";
 import {
   StatelessRefreshableJWTConfig,
   RefreshTokenPayload,
+  StatelessRefreshableJWTConfigSchema,
 } from "../base/types";
 import {
+  JWTConfigError,
   JWTExpiredError,
   JWTInvalidError,
   JWTSignError,
@@ -30,10 +32,10 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
   RefreshTokenIssuer<string>,
   RefreshAccessHandler<string, TPayload> {
   /** Secret used specifically for signing refresh tokens */
-  private refreshSecret: Secret;
+  protected refreshSecret: Secret;
 
   /** Expiration time for refresh tokens */
-  private refreshExpiresIn: string;
+  protected refreshExpiresIn: string;
 
   /**
    * Initialize the strategy with configuration.
@@ -41,7 +43,14 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
    * Why: separating refresh and access token secrets ensures that
    * a compromise of one token type does not affect the other.
    */
-  constructor(config: StatelessRefreshableJWTConfig) {
+  constructor(rawConfig: unknown) {
+    const parsed = StatelessRefreshableJWTConfigSchema.safeParse(rawConfig);
+    if (!parsed.success) {
+      throw new JWTConfigError(parsed.error);
+    }
+
+    const config = parsed.data;
+
     super({
       secret: config.secret,
       algorithm: config.algorithm,
@@ -51,7 +60,7 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
     });
 
     this.refreshSecret = config.refreshSecret;
-    this.refreshExpiresIn = config.refreshExpiresIn ?? "7d";
+    this.refreshExpiresIn = config.refreshExpiresIn;
   }
 
   /**
@@ -90,7 +99,7 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
   async validateRefreshToken(token: string): Promise<RefreshTokenPayload> {
     try {
       const decoded = jwt.verify(token, this.refreshSecret, {
-        algorithms: [this.config.algorithm ?? "HS256"],
+        algorithms: [this.config.algorithm],
         issuer: this.config.issuer,
         audience: this.config.audience,
       });
