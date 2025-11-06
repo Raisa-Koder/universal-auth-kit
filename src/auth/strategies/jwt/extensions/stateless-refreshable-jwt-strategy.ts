@@ -1,21 +1,22 @@
 import jwt, { JwtPayload, Secret, SignOptions } from "jsonwebtoken";
+
 import {
-  StatelessRefreshableJWTConfig,
-  RefreshTokenPayload,
-  StatelessRefreshableJWTConfigSchema,
-} from "../base/types";
+  RefreshAccessHandler,
+  RefreshTokenIssuer,
+  RefreshTokenValidator,
+} from "@/src/auth/capabilities/token/refresh-capability";
+
 import {
   JWTConfigError,
   JWTExpiredError,
   JWTInvalidError,
   JWTSignError,
 } from "../base/errors";
-import {
-  RefreshAccessHandler,
-  RefreshTokenIssuer,
-  RefreshTokenValidator,
-} from "@/src/auth/capabilities/token/refresh-capability";
 import { StatelessJWTStrategy } from "../base/stateless-jwt-strategy";
+import {
+  RefreshTokenPayload,
+  StatelessRefreshableJWTConfigSchema,
+} from "../base/types";
 
 /**
  * Stateless JWT strategy with refresh token support.
@@ -28,9 +29,10 @@ import { StatelessJWTStrategy } from "../base/stateless-jwt-strategy";
 export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
   extends StatelessJWTStrategy<TPayload>
   implements
-  RefreshTokenValidator<RefreshTokenPayload>,
-  RefreshTokenIssuer<string>,
-  RefreshAccessHandler<string, TPayload> {
+    RefreshTokenValidator<RefreshTokenPayload>,
+    RefreshTokenIssuer<string>,
+    RefreshAccessHandler<string, TPayload>
+{
   /** Secret used specifically for signing refresh tokens */
   protected refreshSecret: Secret;
 
@@ -81,8 +83,8 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
         expiresIn: this.refreshExpiresIn as SignOptions["expiresIn"],
       };
       return jwt.sign(payload, this.refreshSecret, options);
-    } catch (err: any) {
-      throw new JWTSignError(err);
+    } catch (error: unknown) {
+      throw new JWTSignError(error as Error | undefined);
     }
   }
 
@@ -104,22 +106,22 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
         audience: this.config.audience,
       });
 
-
       if (typeof decoded === "string") {
         throw new JWTInvalidError(new Error("Invalid refresh token payload"));
       }
 
       const payload = decoded as RefreshTokenPayload;
 
-      if (payload.type !== "refresh") {
-        throw new JWTInvalidError(new Error("Not a refresh token"));
-      }
-
       return payload;
-    } catch (err: any) {
-      if (err.name === "TokenExpiredError") throw new JWTExpiredError(err);
-      if (err.name === "JsonWebTokenError") throw new JWTInvalidError(err);
-      throw err;
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "TokenExpiredError")
+          throw new JWTExpiredError(error);
+        if (error.name === "JsonWebTokenError")
+          throw new JWTInvalidError(error);
+        throw error;
+      }
+      throw error;
     }
   }
 
@@ -135,7 +137,7 @@ export class StatelessRefreshableJWTStrategy<TPayload extends JwtPayload>
    */
   async refreshAccess(
     accessPayload: TPayload,
-    refreshToken: string
+    refreshToken: string,
   ): Promise<{ accessToken: string; refreshToken: string }> {
     const refreshPayload = await this.validateRefreshToken(refreshToken);
 

@@ -1,5 +1,6 @@
 // src/auth/jwt/types.ts
-import type { SignOptions, Algorithm } from "jsonwebtoken";
+import type { Algorithm } from "jsonwebtoken";
+
 import { z } from "zod";
 
 export const AllowedAlgorithms: Algorithm[] = ["RS256", "ES256"];
@@ -24,15 +25,19 @@ export const StatelessRefreshableJWTConfigSchema = JwtConfigSchema.extend({
   refreshExpiresIn: z.string().optional().default("1h"),
 });
 
-export type StatelessRefreshableJWTConfig = z.infer<typeof StatelessRefreshableJWTConfigSchema>;
+export type StatelessRefreshableJWTConfig = z.infer<
+  typeof StatelessRefreshableJWTConfigSchema
+>;
 
 export interface CredentialBoundJWTCredentials {
   identifier: string;
   password: string;
-  runtimeClaims?: Record<string, any>;
+  runtimeClaims?: Record<string, unknown>;
 }
 
-export interface CredentialBoundJWTResult<TUser extends { id: string; [key: string]: any }> {
+export interface CredentialBoundJWTResult<
+  TUser extends { id: string; [key: string]: unknown },
+> {
   token: string;
   user: TUser;
 }

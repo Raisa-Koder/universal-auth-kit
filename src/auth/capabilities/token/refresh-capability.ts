@@ -7,7 +7,10 @@ export interface RefreshTokenIssuer<TResult> {
 }
 
 export interface RefreshAccessHandler<TAccess, TRefresh> {
-  refreshAccess(refreshToken: TRefresh, accessPayload: TAccess): Promise<{
+  refreshAccess(
+    refreshToken: TRefresh,
+    accessPayload: TAccess,
+  ): Promise<{
     accessToken: string;
     refreshToken: string;
   }>;

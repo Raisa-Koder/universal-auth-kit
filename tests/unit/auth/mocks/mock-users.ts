@@ -1,11 +1,9 @@
-
-
 // Example user types
 export interface User {
-    id: string;
-    email: string;
-    role: string;
-    [key: string]: any;
+  id: string;
+  email: string;
+  role: string;
+  [key: string]: unknown;
 }
 
 export const mockUsers = {

@@ -1,23 +1,22 @@
-// tests/auth/jwt/stateless-strategy.test.ts
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import jwt from "jsonwebtoken";
 import { StatelessJWTStrategy } from "@/src/auth/strategies/jwt/base/stateless-jwt-strategy";
+
 import { keyPairs, pickRandomAlgorithm } from "../helpers";
 
 // Fake timers setup for expiry tests
 beforeEach(() => {
-    vi.useFakeTimers();
+  vi.useFakeTimers();
 });
 
 afterEach(() => {
-    vi.useRealTimers();
+  vi.useRealTimers();
 });
 
 describe("StatelessJWTStrategy - Dynamic Algorithm Switching", () => {
   const algorithms = ["RS256", "ES256"] as const;
 
-  algorithms.forEach((algo) => {
+  for (const algo of algorithms) {
     it(`should generate and validate token correctly with ${algo}`, async () => {
       const { privateKey } = keyPairs[algo];
       const strategy = new StatelessJWTStrategy({
@@ -33,7 +32,7 @@ describe("StatelessJWTStrategy - Dynamic Algorithm Switching", () => {
       const decoded = await strategy.validateToken(token);
       expect(decoded).toMatchObject(payload);
     });
-  });
+  }
 
   it("should pass when algorithms switch dynamically per iteration", async () => {
     const iterations = 5;

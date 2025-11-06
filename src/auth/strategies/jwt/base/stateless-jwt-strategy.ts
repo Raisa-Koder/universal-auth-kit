@@ -1,5 +1,8 @@
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
-import { JwtConfigSchema, JwtConfig } from "./types";
+
+import { TokenIssuer } from "@/src/auth/capabilities/core/issue-capability";
+import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability";
+
 import {
   JWTConfigError,
   JWTExpiredError,
@@ -7,8 +10,7 @@ import {
   JWTSignError,
   JWTUnknownError,
 } from "./errors";
-import { TokenIssuer } from "@/src/auth/capabilities/core/issue-capability";
-import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability";
+import { JwtConfig, JwtConfigSchema } from "./types";
 
 /**
  * Provides a stateless JSON Web Token (JWT) authentication mechanism.
@@ -29,25 +31,26 @@ import { TokenValidator } from "@/src/auth/capabilities/core/validate-capability
  * @typeParam TPayload - The expected shape of the token payload.
  */
 export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
-  implements TokenIssuer<TPayload>, TokenValidator<TPayload> {
+  implements TokenIssuer<TPayload>, TokenValidator<TPayload>
+{
   /**
- * The validated JWT configuration accessible to subclasses.
- *
- * @protected
- * @remarks
- * Using `protected` instead of `private` allows derived strategies
- * (such as refreshable or hybrid JWT strategies) to reuse core
- * configuration values like {@link JwtConfig.algorithm | algorithm},
- * {@link JwtConfig.secret | secret}, and {@link JwtConfig.expiresIn | expiresIn}
- * without exposing them publicly.
- *
- * Why:
- * - Enables subclass extensions (e.g., refresh token support) to
- *   maintain consistency with the base configuration.
- * - Prevents code duplication and keeps configuration handling centralized.
- * - Keeps configuration hidden from external consumers while allowing
- *   controlled access within the inheritance hierarchy.
- */
+   * The validated JWT configuration accessible to subclasses.
+   *
+   * @protected
+   * @remarks
+   * Using `protected` instead of `private` allows derived strategies
+   * (such as refreshable or hybrid JWT strategies) to reuse core
+   * configuration values like {@link JwtConfig.algorithm | algorithm},
+   * {@link JwtConfig.secret | secret}, and {@link JwtConfig.expiresIn | expiresIn}
+   * without exposing them publicly.
+   *
+   * Why:
+   * - Enables subclass extensions (e.g., refresh token support) to
+   *   maintain consistency with the base configuration.
+   * - Prevents code duplication and keeps configuration handling centralized.
+   * - Keeps configuration hidden from external consumers while allowing
+   *   controlled access within the inheritance hierarchy.
+   */
   protected config: JwtConfig;
 
   /**
@@ -89,11 +92,11 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
         algorithm: this.config.algorithm,
         ...(this.config.issuer && { issuer: this.config.issuer }),
         ...(this.config.audience && { audience: this.config.audience }),
-        expiresIn: this.config.expiresIn as SignOptions["expiresIn"]
+        expiresIn: this.config.expiresIn as SignOptions["expiresIn"],
       };
       return jwt.sign(payload, this.config.secret, options);
-    } catch (err: any) {
-      throw new JWTSignError(err);
+    } catch (error: unknown) {
+      throw new JWTSignError(error as Error | undefined);
     }
   }
 
@@ -124,10 +127,15 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
       });
 
       return decoded as TPayload;
-    } catch (err: any) {
-      if (err.name === "TokenExpiredError") throw new JWTExpiredError(err);
-      if (err.name === "JsonWebTokenError") throw new JWTInvalidError(err);
-      throw new JWTUnknownError(err);
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.name === "TokenExpiredError")
+          throw new JWTExpiredError(error);
+        if (error.name === "JsonWebTokenError")
+          throw new JWTInvalidError(error);
+        throw new JWTUnknownError(error);
+      }
+      throw error;
     }
   }
 }

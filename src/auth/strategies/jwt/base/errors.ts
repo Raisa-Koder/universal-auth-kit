@@ -1,8 +1,8 @@
 export class JWTError extends Error {
   constructor(
     message: string,
-    public code: string = "JWT_ERROR",
-    public cause?: Error
+    public code = "JWT_ERROR",
+    public cause?: Error,
   ) {
     super(message);
     this.name = new.target.name;
