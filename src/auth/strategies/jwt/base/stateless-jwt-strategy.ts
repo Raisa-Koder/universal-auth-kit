@@ -128,14 +128,12 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
       });
 
       return decoded as TPayload;
-    } catch (error) {
-      if (error instanceof Error) {
-        if (error.name === "TokenExpiredError")
-          throw new JWTExpiredError(error);
-        if (error.name === "JsonWebTokenError")
-          throw new JWTInvalidError(error);
-        throw new JWTUnknownError(error);
-      }
+    } catch (error: unknown) {
+      if (error instanceof jwt.TokenExpiredError)
+        throw new JWTExpiredError(error);
+      if (error instanceof jwt.JsonWebTokenError)
+        throw new JWTInvalidError(error);
+      if (error instanceof Error) throw new JWTUnknownError(error);
       throw error;
     }
   }

@@ -152,5 +152,16 @@ describe("StatelessRefreshableJWTStrategy", () => {
         strategy.validateRefreshToken("dummy.token"),
       ).rejects.toThrow(JWTInvalidError);
     });
+
+    it("should rethrow non-Error exceptions in validateRefreshToken", async () => {
+      // Mock jwt.verify to throw a non-Error value (e.g., a number)
+      vi.spyOn(jwt, "verify").mockImplementation(() => {
+        throw 42 as unknown; // satisfies TS and ESLint
+      });
+
+      await expect(strategy.validateRefreshToken("dummy.token")).rejects.toBe(
+        42,
+      );
+    });
   });
 });
