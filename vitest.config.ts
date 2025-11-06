@@ -16,7 +16,7 @@ export default defineConfig({
     clearMocks: true,
     coverage: {
       provider: "v8",
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json", "html", "json-summary", "lcov"],
       reportsDirectory: "coverage/unit",
       include: ["src/auth/strategies/**/*.ts"],
     },
