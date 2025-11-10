@@ -1,113 +1,297 @@
-# Authjoy – Kernel-Level Authentication Library 
+# Authjoy
 
-**Status:** Experimental / v0 – minimal JWT strategy  
+> **Lightweight, modular, and extendable authentication strategies for Node.js**
 
-**A lightweight, modular authentication kernel for quick integration and prototyping, letting developers focus on project logic instead of reinventing authentication.**
+[![Build](https://github.com/kodeforgeX/Authjoy/actions/workflows/ci.yml/badge.svg)](https://github.com/kodeforgeX/Authjoy/actions)
+[![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://kodeforgex.github.io/Authjoy/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
----
+Authjoy provides a clean and extensible foundation for handling authentication in your applications.  
+It’s built around **modular strategies**, designed to separate authentication concerns from business logic, while staying framework-agnostic and strongly typed.
 
-## 🚀 Problem Statement
-
-Many authentication libraries mix **core authentication** with **business logic**, making it difficult to:
-
-- Quickly start new projects without rewriting auth  
-- Add custom logic without entangling it with authentication  
-- Maintain a clear separation of concerns  
-
-**Authjoy** solves this by providing a **central kernel** to manage authentication strategies, keeping your projects clean and modular.
+> ⚠️ **Status:** Experimental (v0)  
+> The kernel system is planned for later versions.  
+> For now, each strategy can be used independently.
 
 ---
 
-## 🎯 Goal
+## ✨ Features
 
-- Provide a **central kernel** to orchestrate multiple authentication strategies  
-- Keep the library **lightweight, modular, and extendable**  
-- Allow developers to **focus on business logic**, not authentication plumbing  
-
----
-
-## ⚙️ Concept
-
-**Kernel**  
-- Core of the library, responsible for managing authentication strategies  
-- Handles strategy registration and request authentication  
-
-**Strategy**  
-- Pluggable units (JWT, Google OAuth, etc.)  
-- Implement `login` and/or `authenticate` methods  
-- Can be registered to the kernel  
-
-**Adapter-in-Kernel (v0)**  
-- Experimental approach to centralize authentication management  
-- Minimal implementation with a JWT strategy for demonstration  
+- ✅ Stateless, modular authentication strategies  
+- 🔐 Strongly typed with TypeScript  
+- ⚙️ Framework-agnostic design  
+- 🧩 Easy to extend with custom strategies  
+- 🧪 CI/CD with Vitest for automated testing  
+- 🧱 Clean code style via ESLint + Prettier  
+- 📘 Full [TypeDoc documentation](https://kodeforgex.github.io/Authjoy/)
 
 ---
 
-## 💡 Minimal Example (v0)
+## 📦 Installation
 
-```ts
-import { AuthKernel, AuthAdapter } from './kernel'
+> The package is not yet published on npm.  
+> Clone or install it locally until release.
+```bash
+# Clone the repository
+git clone https://github.com/kodeforgeX/Authjoy.git
 
-// Initialize kernel with adapter and strategies
-const kernel = new AuthKernel(new AuthAdapter(), {
-  jwt: { 
-    secret: "supersecret", 
-    algorithm: "HS256",
-    expiresIn: "1h",
-    payload: { user_id: "#124" role: "admin" } 
-  },
-})
+# Navigate to the project
+cd Authjoy
 
-// Retrieve the JWT strategy
-const jwtStrategy = kernel.getStrategy("jwt")
-
-// Perform login
-await jwtStrategy.login({
-  identifier: "user@example.com",
-  password: "password"
-})
+# Install dependencies
+pnpm install
 ```
----
 
-## 🛠 Current Status
-
-- AuthKernel class implemented
-- Minimal JWT strategy implemented
-- Kernel + JWT strategy can authenticate requests in a basic way
-- Focus: **proof-of-concept for modular authentication**
+### Once published:
+```bash
+npm install authjoy
+```
 
 ---
 
-## 🗺 Roadmap
+## 🚀 Quick Start
+Stateless JWT Strategy
+Issue and validate JWTs without session storage.
+```ts
+import { StatelessJWTStrategy } from 'authjoy';
 
-v0 (Current): Kernel + minimal JWT strategy (runnable) <br>
-v1: Add more authentication strategies (session, OAuth, API key) <br>
-v2: Optional middleware helpers and adapters <br> 
-v3: Community contributions, logging, error handling <br>
-v4: Stable version with tests, benchmarks, and examples <br>
+const jwtStrategy = new StatelessJWTStrategy({
+  secret: 'supersecret',
+  algorithm: 'RS256',
+  expiresIn: '1h',
+  issuer: 'authjoy',
+  audience: 'my-app',
+});
+
+// Generate a token
+const token = jwtStrategy.generateToken({ userId: 123, role: 'admin' });
+
+// Validate it later
+const payload = await jwtStrategy.validateToken(token);
+console.log(payload.userId); // 123
+Credential-Bound JWT Strategy
+Authenticate users with credentials, then issue a token bound to them.
+```
+```ts
+import { CredentialBoundJWTStrategy } from 'authjoy';
+
+const cbJwtStrategy = new CredentialBoundJWTStrategy({
+  secret: 'supersecret',
+  algorithm: 'RS256',
+  expiresIn: '1h',
+});
+
+await cbJwtStrategy.login({
+  identifier: 'user@example.com',
+  password: 'password123',
+});
+Stateless Refreshable JWT Strategy
+Generate short-lived access tokens with refresh tokens for longer sessions.
+```
+```ts
+import { StatelessRefreshableJWTStrategy } from 'authjoy';
+
+const refreshable = new StatelessRefreshableJWTStrategy({
+  secret: 'supersecret',
+  algorithm: 'RS256',
+  expiresIn: '15m',
+  refreshExpiresIn: '7d',
+});
+
+const { accessToken, refreshToken } = refreshable.generateToken({
+  userId: 456,
+});
+
+const payload = await refreshable.validateToken(accessToken);
+```
 
 ---
 
-## 📈 Why Use Authjoy?
 
-- Avoid repeating authentication logic across projects
-- Focus on project-specific business logic
-- Lightweight, modular, and easy to extend
-- Framework-agnostic: integrate in Node.js or other environments
+## 🧠 Design Philosophy
+Authjoy is built on the principle of strategy-based modularity:
+- Each authentication method (JWT, OAuth, API key, etc.) is encapsulated in its own strategy.
+- Strategies can be composed, swapped, or extended without coupling to business logic.
+- This keeps authentication isolated, testable, and reusable across projects.
+- The AuthKernel will be introduced in future versions to manage multiple strategies centrally.
+- For now, each strategy is standalone.
 
 ---
+
+
+## 🧩 Architecture Diagram
+Below is a high-level representation of the current structure and the future kernel integration.
+
+```markdown
+                ┌──────────────────────────┐
+                │        Authjoy v0        │
+                │ (Independent Strategies) │
+                └────────────┬─────────────┘
+                             │
+        ┌────────────────────┼────────────────────┐
+        │                    │                    │
+┌────────────────┐   ┌────────────────────┐   ┌────────────────────────┐
+│ StatelessJWT   │   │ CredentialBoundJWT │   │ StatelessRefreshableJWT│
+│  Strategy       │   │  Strategy          │   │  Strategy              │
+└────────────────┘   └────────────────────┘   └────────────────────────┘
+
+                             ▼
+                ┌──────────────────────────┐
+                │     (Future) AuthKernel   │
+                │  Manages multiple strategies │
+                └──────────────────────────┘
+```
+
+
+---
+
+
+## 🧩 API Documentation
+### Full API documentation (TypeDoc):
+👉 [kodeforgex.github.io/Authjoy](https://kodeforgex.github.io/Authjoy/)
+
+### Includes:
+- Class references (StatelessJWTStrategy, CredentialBoundJWTStrategy, etc.)
+- Configuration schema
+- Type definitions (JwtPayload, etc.)
+- Example workflows
+
+
+---
+
+
+## 🔮 Roadmap
+| Version | Focus                                      | Status      |
+|---------|-------------------------------------------|------------|
+| v0      | Independent JWT strategies                | ✅ Active   |
+| v1      | Introduce kernel for multi-strategy orchestration | ⏳ Planned |
+| v2      | Add OAuth, session, API key strategies    | ⏳ Planned |
+| v3      | Middleware helpers, adapters, logging    | ⏳ Planned |
+| v4      | Stable release with tests, examples, and benchmarks | ⏳ Planned |
+
+
+---
+
+
+## 🧪 Development & Testing
+Run tests locally using Vitest:
+
+```bash
+pnpm run test
+Lint and format code:
+```
+```bash
+pnpm run lint
+pnpm run format
+```
+Run type checks:
+```bash
+pnpm run typecheck
+```
+
+
+---
+
+
+## ⚙️ Continuous Integration
+Authjoy uses GitHub Actions for automated:
+- Linting and formatting
+- TypeScript builds
+- Vitest test suite
+
+All pull requests are validated via CI before merge.
+
+
+---
+
+
+## ⚠️ Security Notes
+- Stateless tokens cannot be revoked server-side; consider short expiry or blacklists.
+- Always validate algorithms and keys.
+- Use HTTPS in production.
+- Rotate keys regularly for RS256 / ES256.
+
+
+---
+
 
 ## 🤝 Contributing
+Contributions are welcome!
 
-- Fork the repo
-- Add new strategies or improve docs
-- Submit a PR
-- Label issues: good-first-issue, help-wanted
+### Workflow
+- Fork the repository
+- Create a feature branch
+
+```bash
+git checkout -b feature/my-feature
+Run tests & checks
+```
+```bash
+pnpm run verify
+```
+- Commit & push
+- Open a Pull Request
+
+### Code Style
+- TypeScript strict mode
+- Enforced with ESLint + Prettier
+= PRs must pass all CI checks before merge
+
 
 ---
 
-## 💌 Feedback & Discussions
 
-- Even in this experimental stage, feedback is welcome:
-  - Feature ideas, bug reports, or strategy requests: open an issue
-  - Usage discussions and demo sharing: GitHub Discussions
+## 📜 License
+Licensed under the MIT License — see LICENSE for details.
+
+
+---
+
+
+## 🧭 Project Structure (v0)
+```text
+Authjoy/
+│
+├── src/
+|   ├── auth/
+│   │   ├── strategies/
+|   |   |   └──  jwt/
+|   |   |       ├── base/
+│   │   │       |   ├── StatelessJWTStrategy.ts
+|   |   |       |   ├── errors.ts
+|   |   |       |   └── types.ts
+|   |   |       ├── extensions
+|   |   │       │   ├── CredentialBoundJWTStrategy.ts
+|   |   │       │   └── StatelessRefreshableJWTStrategy.ts
+|   |   |       └── index.ts
+|   |   ├── adapters
+|   |   |   ├── (files)
+|   |   |   └── index.ts
+|   |   ├── capabilities
+|   |   |   ├── ...
+|   |   |   └── index.ts
+|   |   └── index.ts
+│   └── index.ts
+│
+├── tests/
+│   └── units/
+|       └── auth/
+│
+├── docs/  (generated via TypeDoc)
+├── package.json
+├── tsconfig.json
+└── README.md
+```
+> 💡 Example Use Cases
+- API authentication using JWTs
+- Server-to-server communication
+- Stateless microservice authentication
+- Building a custom auth system from composable strategies
+
+
+---
+
+
+## 🧾 Credits
+- Developed and maintained by KodeforgeX
+- Documentation powered by TypeDoc
