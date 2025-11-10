@@ -19,6 +19,7 @@ export default defineConfig({
       reporter: ["text", "json", "html", "json-summary", "lcov"],
       reportsDirectory: "coverage/unit",
       include: ["src/auth/strategies/**/*.ts"],
+      exclude: ["**/index.ts"]
     },
   },
   plugins: [swc.vite({ module: { type: "es6" } })],
