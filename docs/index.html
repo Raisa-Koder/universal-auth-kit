@@ -1,74 +1,220 @@
-<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Authjoy - v0.0.1</title><meta name="description" content="Documentation for Authjoy"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">Authjoy - v0.0.1</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>Authjoy - v0.0.1</h1></div><div class="tsd-panel tsd-typography"><h1 id="authjoy-kernel-level-authentication-library" class="tsd-anchor-link">Authjoy – Kernel-Level Authentication Library<a href="#authjoy-kernel-level-authentication-library" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p><strong>Status:</strong> Experimental / v0 – minimal JWT strategy</p>
-<p><strong>A lightweight, modular authentication kernel for quick integration and prototyping, letting developers focus on project logic instead of reinventing authentication.</strong></p>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Authjoy - v0.0.1</title><meta name="description" content="Documentation for Authjoy"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">Authjoy - v0.0.1</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>Authjoy - v0.0.1</h1></div><div class="tsd-panel tsd-typography"><h1 id="authjoy" class="tsd-anchor-link">Authjoy<a href="#authjoy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><blockquote>
+<p><strong>Lightweight, modular, and extendable authentication strategies for Node.js</strong></p>
+</blockquote>
+<p><a href="https://github.com/kodeforgeX/Authjoy/actions"><img src="https://github.com/kodeforgeX/Authjoy/actions/workflows/ci.yml/badge.svg" alt="Build"></a>
+<a href="https://kodeforgex.github.io/Authjoy/"><img src="https://img.shields.io/badge/docs-typedoc-blue" alt="Docs"></a>
+<a href="LICENSE.md"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></p>
+<p>Authjoy provides a clean and extensible foundation for handling authentication in your applications.<br>
+It’s built around <strong>modular strategies</strong>, designed to separate authentication concerns from business logic, while staying framework-agnostic and strongly typed.</p>
+<blockquote>
+<p>⚠️ <strong>Status:</strong> Experimental (v0)<br>
+The kernel system is planned for later versions.<br>
+For now, each strategy can be used independently.</p>
+</blockquote>
 <hr>
-<h2 id="🚀-problem-statement" class="tsd-anchor-link">🚀 Problem Statement<a href="#🚀-problem-statement" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Many authentication libraries mix <strong>core authentication</strong> with <strong>business logic</strong>, making it difficult to:</p>
-<ul>
-<li>Quickly start new projects without rewriting auth</li>
-<li>Add custom logic without entangling it with authentication</li>
-<li>Maintain a clear separation of concerns</li>
-</ul>
-<p><strong>Authjoy</strong> solves this by providing a <strong>central kernel</strong> to manage authentication strategies, keeping your projects clean and modular.</p>
-<hr>
-<h2 id="🎯-goal" class="tsd-anchor-link">🎯 Goal<a href="#🎯-goal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
-<li>Provide a <strong>central kernel</strong> to orchestrate multiple authentication strategies</li>
-<li>Keep the library <strong>lightweight, modular, and extendable</strong></li>
-<li>Allow developers to <strong>focus on business logic</strong>, not authentication plumbing</li>
-</ul>
-<hr>
-<h2 id="⚙️-concept" class="tsd-anchor-link">⚙️ Concept<a href="#⚙️-concept" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p><strong>Kernel</strong></p>
-<ul>
-<li>Core of the library, responsible for managing authentication strategies</li>
-<li>Handles strategy registration and request authentication</li>
-</ul>
-<p><strong>Strategy</strong></p>
-<ul>
-<li>Pluggable units (JWT, Google OAuth, etc.)</li>
-<li>Implement <code>login</code> and/or <code>authenticate</code> methods</li>
-<li>Can be registered to the kernel</li>
-</ul>
-<p><strong>Adapter-in-Kernel (v0)</strong></p>
-<ul>
-<li>Experimental approach to centralize authentication management</li>
-<li>Minimal implementation with a JWT strategy for demonstration</li>
+<h2 id="✨-features" class="tsd-anchor-link">✨ Features<a href="#✨-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>✅ Stateless, modular authentication strategies</li>
+<li>🔐 Strongly typed with TypeScript</li>
+<li>⚙️ Framework-agnostic design</li>
+<li>🧩 Easy to extend with custom strategies</li>
+<li>🧪 CI/CD with Vitest for automated testing</li>
+<li>🧱 Clean code style via ESLint + Prettier</li>
+<li>📘 Full <a href="https://kodeforgex.github.io/Authjoy/">TypeDoc documentation</a></li>
 </ul>
 <hr>
-<h2 id="💡-minimal-example-v0" class="tsd-anchor-link">💡 Minimal Example (v0)<a href="#💡-minimal-example-v0" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="ts"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">AuthKernel</span><span class="hl-1">, </span><span class="hl-2">AuthAdapter</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;./kernel&#39;</span><br/><br/><span class="hl-4">// Initialize kernel with adapter and strategies</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">kernel</span><span class="hl-1"> = </span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-7">AuthKernel</span><span class="hl-1">(</span><span class="hl-5">new</span><span class="hl-1"> </span><span class="hl-7">AuthAdapter</span><span class="hl-1">(), {</span><br/><span class="hl-1">  </span><span class="hl-2">jwt:</span><span class="hl-1"> { </span><br/><span class="hl-1">    </span><span class="hl-2">secret:</span><span class="hl-1"> </span><span class="hl-3">&quot;supersecret&quot;</span><span class="hl-1">, </span><br/><span class="hl-1">    </span><span class="hl-2">algorithm:</span><span class="hl-1"> </span><span class="hl-3">&quot;HS256&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">expiresIn:</span><span class="hl-1"> </span><span class="hl-3">&quot;1h&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-2">payload:</span><span class="hl-1"> { </span><span class="hl-2">user_id:</span><span class="hl-1"> </span><span class="hl-3">&quot;#124&quot;</span><span class="hl-1"> </span><span class="hl-2">role</span><span class="hl-1">: </span><span class="hl-3">&quot;admin&quot;</span><span class="hl-1"> } </span><br/><span class="hl-1">  },</span><br/><span class="hl-1">})</span><br/><br/><span class="hl-4">// Retrieve the JWT strategy</span><br/><span class="hl-5">const</span><span class="hl-1"> </span><span class="hl-6">jwtStrategy</span><span class="hl-1"> = </span><span class="hl-2">kernel</span><span class="hl-1">.</span><span class="hl-7">getStrategy</span><span class="hl-1">(</span><span class="hl-3">&quot;jwt&quot;</span><span class="hl-1">)</span><br/><br/><span class="hl-4">// Perform login</span><br/><span class="hl-0">await</span><span class="hl-1"> </span><span class="hl-2">jwtStrategy</span><span class="hl-1">.</span><span class="hl-7">login</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-2">identifier:</span><span class="hl-1"> </span><span class="hl-3">&quot;user@example.com&quot;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-2">password:</span><span class="hl-1"> </span><span class="hl-3">&quot;password&quot;</span><br/><span class="hl-1">})</span>
+<h2 id="📦-installation" class="tsd-anchor-link">📦 Installation<a href="#📦-installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><blockquote>
+<p>The package is not yet published on npm.<br>
+Clone or install it locally until release.</p>
+</blockquote>
+<pre><code class="bash"><span class="hl-0"># Clone the repository</span><br/><span class="hl-1">git</span><span class="hl-2"> </span><span class="hl-3">clone</span><span class="hl-2"> </span><span class="hl-3">https://github.com/kodeforgeX/Authjoy.git</span><br/><br/><span class="hl-0"># Navigate to the project</span><br/><span class="hl-1">cd</span><span class="hl-2"> </span><span class="hl-3">Authjoy</span><br/><br/><span class="hl-0"># Install dependencies</span><br/><span class="hl-1">pnpm</span><span class="hl-2"> </span><span class="hl-3">install</span>
+</code><button type="button">Copy</button></pre>
+
+<h3 id="once-published" class="tsd-anchor-link">Once published:<a href="#once-published" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="bash"><span class="hl-1">npm</span><span class="hl-2"> </span><span class="hl-3">install</span><span class="hl-2"> </span><span class="hl-3">authjoy</span>
 </code><button type="button">Copy</button></pre>
 
 <hr>
-<h2 id="🛠-current-status" class="tsd-anchor-link">🛠 Current Status<a href="#🛠-current-status" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
-<li>AuthKernel class implemented</li>
-<li>Minimal JWT strategy implemented</li>
-<li>Kernel + JWT strategy can authenticate requests in a basic way</li>
-<li>Focus: <strong>proof-of-concept for modular authentication</strong></li>
-</ul>
+<h2 id="🚀-quick-start" class="tsd-anchor-link">🚀 Quick Start<a href="#🚀-quick-start" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Stateless JWT Strategy
+Issue and validate JWTs without session storage.</p>
+<pre><code class="ts"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">StatelessJWTStrategy</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;authjoy&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">jwtStrategy</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">StatelessJWTStrategy</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">secret:</span><span class="hl-2"> </span><span class="hl-3">&#39;supersecret&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">algorithm:</span><span class="hl-2"> </span><span class="hl-3">&#39;RS256&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">expiresIn:</span><span class="hl-2"> </span><span class="hl-3">&#39;1h&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">issuer:</span><span class="hl-2"> </span><span class="hl-3">&#39;authjoy&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">audience:</span><span class="hl-2"> </span><span class="hl-3">&#39;my-app&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">});</span><br/><br/><span class="hl-0">// Generate a token</span><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">token</span><span class="hl-2"> = </span><span class="hl-5">jwtStrategy</span><span class="hl-2">.</span><span class="hl-1">generateToken</span><span class="hl-2">({ </span><span class="hl-5">userId:</span><span class="hl-2"> </span><span class="hl-8">123</span><span class="hl-2">, </span><span class="hl-5">role:</span><span class="hl-2"> </span><span class="hl-3">&#39;admin&#39;</span><span class="hl-2"> });</span><br/><br/><span class="hl-0">// Validate it later</span><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">payload</span><span class="hl-2"> = </span><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">jwtStrategy</span><span class="hl-2">.</span><span class="hl-1">validateToken</span><span class="hl-2">(</span><span class="hl-5">token</span><span class="hl-2">);</span><br/><span class="hl-5">console</span><span class="hl-2">.</span><span class="hl-1">log</span><span class="hl-2">(</span><span class="hl-5">payload</span><span class="hl-2">.</span><span class="hl-5">userId</span><span class="hl-2">); </span><span class="hl-0">// 123</span><br/><span class="hl-5">Credential</span><span class="hl-2">-</span><span class="hl-5">Bound</span><span class="hl-2"> </span><span class="hl-7">JWT</span><span class="hl-2"> </span><span class="hl-5">Strategy</span><br/><span class="hl-5">Authenticate</span><span class="hl-2"> </span><span class="hl-5">users</span><span class="hl-2"> </span><span class="hl-4">with</span><span class="hl-2"> </span><span class="hl-5">credentials</span><span class="hl-2">, </span><span class="hl-5">then</span><span class="hl-2"> </span><span class="hl-5">issue</span><span class="hl-2"> </span><span class="hl-5">a</span><span class="hl-2"> </span><span class="hl-5">token</span><span class="hl-2"> </span><span class="hl-5">bound</span><span class="hl-2"> </span><span class="hl-5">to</span><span class="hl-2"> </span><span class="hl-5">them</span><span class="hl-2">.</span>
+</code><button type="button">Copy</button></pre>
+
+<pre><code class="ts"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">CredentialBoundJWTStrategy</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;authjoy&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">cbJwtStrategy</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">CredentialBoundJWTStrategy</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">secret:</span><span class="hl-2"> </span><span class="hl-3">&#39;supersecret&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">algorithm:</span><span class="hl-2"> </span><span class="hl-3">&#39;RS256&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">expiresIn:</span><span class="hl-2"> </span><span class="hl-3">&#39;1h&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">});</span><br/><br/><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">cbJwtStrategy</span><span class="hl-2">.</span><span class="hl-1">login</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">identifier:</span><span class="hl-2"> </span><span class="hl-3">&#39;user@example.com&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">password:</span><span class="hl-2"> </span><span class="hl-3">&#39;password123&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">});</span><br/><span class="hl-5">Stateless</span><span class="hl-2"> </span><span class="hl-5">Refreshable</span><span class="hl-2"> </span><span class="hl-7">JWT</span><span class="hl-2"> </span><span class="hl-5">Strategy</span><br/><span class="hl-5">Generate</span><span class="hl-2"> </span><span class="hl-5">short</span><span class="hl-2">-</span><span class="hl-5">lived</span><span class="hl-2"> </span><span class="hl-5">access</span><span class="hl-2"> </span><span class="hl-5">tokens</span><span class="hl-2"> </span><span class="hl-4">with</span><span class="hl-2"> </span><span class="hl-5">refresh</span><span class="hl-2"> </span><span class="hl-5">tokens</span><span class="hl-2"> </span><span class="hl-5">for</span><span class="hl-2"> </span><span class="hl-5">longer</span><span class="hl-2"> </span><span class="hl-5">sessions</span><span class="hl-2">.</span>
+</code><button type="button">Copy</button></pre>
+
+<pre><code class="ts"><span class="hl-4">import</span><span class="hl-2"> { </span><span class="hl-5">StatelessRefreshableJWTStrategy</span><span class="hl-2"> } </span><span class="hl-4">from</span><span class="hl-2"> </span><span class="hl-3">&#39;authjoy&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">refreshable</span><span class="hl-2"> = </span><span class="hl-6">new</span><span class="hl-2"> </span><span class="hl-1">StatelessRefreshableJWTStrategy</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">secret:</span><span class="hl-2"> </span><span class="hl-3">&#39;supersecret&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">algorithm:</span><span class="hl-2"> </span><span class="hl-3">&#39;RS256&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">expiresIn:</span><span class="hl-2"> </span><span class="hl-3">&#39;15m&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">  </span><span class="hl-5">refreshExpiresIn:</span><span class="hl-2"> </span><span class="hl-3">&#39;7d&#39;</span><span class="hl-2">,</span><br/><span class="hl-2">});</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> { </span><span class="hl-7">accessToken</span><span class="hl-2">, </span><span class="hl-7">refreshToken</span><span class="hl-2"> } = </span><span class="hl-5">refreshable</span><span class="hl-2">.</span><span class="hl-1">generateToken</span><span class="hl-2">({</span><br/><span class="hl-2">  </span><span class="hl-5">userId:</span><span class="hl-2"> </span><span class="hl-8">456</span><span class="hl-2">,</span><br/><span class="hl-2">});</span><br/><br/><span class="hl-6">const</span><span class="hl-2"> </span><span class="hl-7">payload</span><span class="hl-2"> = </span><span class="hl-4">await</span><span class="hl-2"> </span><span class="hl-5">refreshable</span><span class="hl-2">.</span><span class="hl-1">validateToken</span><span class="hl-2">(</span><span class="hl-5">accessToken</span><span class="hl-2">);</span>
+</code><button type="button">Copy</button></pre>
+
 <hr>
-<h2 id="🗺-roadmap" class="tsd-anchor-link">🗺 Roadmap<a href="#🗺-roadmap" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>v0 (Current): Kernel + minimal JWT strategy (runnable) <br>
-v1: Add more authentication strategies (session, OAuth, API key) <br>
-v2: Optional middleware helpers and adapters <br>
-v3: Community contributions, logging, error handling <br>
-v4: Stable version with tests, benchmarks, and examples <br></p>
-<hr>
-<h2 id="📈-why-use-authjoy" class="tsd-anchor-link">📈 Why Use Authjoy?<a href="#📈-why-use-authjoy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
-<li>Avoid repeating authentication logic across projects</li>
-<li>Focus on project-specific business logic</li>
-<li>Lightweight, modular, and easy to extend</li>
-<li>Framework-agnostic: integrate in Node.js or other environments</li>
-</ul>
-<hr>
-<h2 id="🤝-contributing" class="tsd-anchor-link">🤝 Contributing<a href="#🤝-contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
-<li>Fork the repo</li>
-<li>Add new strategies or improve docs</li>
-<li>Submit a PR</li>
-<li>Label issues: good-first-issue, help-wanted</li>
-</ul>
-<hr>
-<h2 id="💌-feedback-discussions" class="tsd-anchor-link">💌 Feedback &amp; Discussions<a href="#💌-feedback-discussions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
-<li>Even in this experimental stage, feedback is welcome:
+<h2 id="🧠-design-philosophy" class="tsd-anchor-link">🧠 Design Philosophy<a href="#🧠-design-philosophy" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Authjoy is built on the principle of strategy-based modularity:</p>
 <ul>
-<li>Feature ideas, bug reports, or strategy requests: open an issue</li>
-<li>Usage discussions and demo sharing: GitHub Discussions</li>
+<li>Each authentication method (JWT, OAuth, API key, etc.) is encapsulated in its own strategy.</li>
+<li>Strategies can be composed, swapped, or extended without coupling to business logic.</li>
+<li>This keeps authentication isolated, testable, and reusable across projects.</li>
+<li>The AuthKernel will be introduced in future versions to manage multiple strategies centrally.</li>
+<li>For now, each strategy is standalone.</li>
 </ul>
-</li>
+<hr>
+<h2 id="🧩-architecture-diagram" class="tsd-anchor-link">🧩 Architecture Diagram<a href="#🧩-architecture-diagram" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Below is a high-level representation of the current structure and the future kernel integration.</p>
+<pre><code class="markdown">                ┌──────────────────────────┐
+                │        Authjoy v0        │
+                │ (Independent Strategies) │
+                └────────────┬─────────────┘
+                             │
+        ┌────────────────────┼────────────────────┐
+        │                    │                    │
+┌────────────────┐   ┌────────────────────┐   ┌────────────────────────┐
+│ StatelessJWT   │   │ CredentialBoundJWT │   │ StatelessRefreshableJWT│
+│  Strategy       │   │  Strategy          │   │  Strategy              │
+└────────────────┘   └────────────────────┘   └────────────────────────┘
+
+                             ▼
+                ┌──────────────────────────┐
+                │     (Future) AuthKernel   │
+                │  Manages multiple strategies │
+                └──────────────────────────┘
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="🧩-api-documentation" class="tsd-anchor-link">🧩 API Documentation<a href="#🧩-api-documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><h3 id="full-api-documentation-typedoc" class="tsd-anchor-link">Full API documentation (TypeDoc):<a href="#full-api-documentation-typedoc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>👉 <a href="https://kodeforgex.github.io/Authjoy/">kodeforgex.github.io/Authjoy</a></p>
+<h3 id="includes" class="tsd-anchor-link">Includes:<a href="#includes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Class references (StatelessJWTStrategy, CredentialBoundJWTStrategy, etc.)</li>
+<li>Configuration schema</li>
+<li>Type definitions (JwtPayload, etc.)</li>
+<li>Example workflows</li>
 </ul>
-</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#authjoy-kernel-level-authentication-library"><span>Authjoy – <wbr/>Kernel-<wbr/>Level <wbr/>Authentication <wbr/>Library</span></a><ul><li><a href="#🚀-problem-statement"><span>🚀 <wbr/>Problem <wbr/>Statement</span></a></li><li><a href="#🎯-goal"><span>🎯 <wbr/>Goal</span></a></li><li><a href="#⚙️-concept"><span>⚙️ <wbr/>Concept</span></a></li><li><a href="#💡-minimal-example-v0"><span>💡 <wbr/>Minimal <wbr/>Example (v0)</span></a></li><li><a href="#🛠-current-status"><span>🛠 <wbr/>Current <wbr/>Status</span></a></li><li><a href="#🗺-roadmap"><span>🗺 <wbr/>Roadmap</span></a></li><li><a href="#📈-why-use-authjoy"><span>📈 <wbr/>Why <wbr/>Use <wbr/>Authjoy?</span></a></li><li><a href="#🤝-contributing"><span>🤝 <wbr/>Contributing</span></a></li><li><a href="#💌-feedback-discussions"><span>💌 <wbr/>Feedback &amp; <wbr/>Discussions</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">Authjoy - v0.0.1</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
+<hr>
+<h2 id="🔮-roadmap" class="tsd-anchor-link">🔮 Roadmap<a href="#🔮-roadmap" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Focus</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0</td>
+<td>Independent JWT strategies</td>
+<td>✅ Active</td>
+</tr>
+<tr>
+<td>v1</td>
+<td>Introduce kernel for multi-strategy orchestration</td>
+<td>⏳ Planned</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>Add OAuth, session, API key strategies</td>
+<td>⏳ Planned</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>Middleware helpers, adapters, logging</td>
+<td>⏳ Planned</td>
+</tr>
+<tr>
+<td>v4</td>
+<td>Stable release with tests, examples, and benchmarks</td>
+<td>⏳ Planned</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="🧪-development-testing" class="tsd-anchor-link">🧪 Development &amp; Testing<a href="#🧪-development-testing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Run tests locally using Vitest:</p>
+<pre><code class="bash"><span class="hl-1">pnpm</span><span class="hl-2"> </span><span class="hl-3">run</span><span class="hl-2"> </span><span class="hl-3">test</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Lint and format code:</p>
+<pre><code class="bash"><span class="hl-1">pnpm</span><span class="hl-2"> </span><span class="hl-3">run</span><span class="hl-2"> </span><span class="hl-3">lint</span>
+</code><button type="button">Copy</button></pre>
+
+<hr>
+<h2 id="⚙️-continuous-integration" class="tsd-anchor-link">⚙️ Continuous Integration<a href="#⚙️-continuous-integration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Authjoy uses GitHub Actions for automated:</p>
+<ul>
+<li>Linting and formatting</li>
+<li>TypeScript builds</li>
+<li>Vitest test suite</li>
+</ul>
+<p>All pull requests are validated via CI before merge.</p>
+<hr>
+<h2 id="⚠️-security-notes" class="tsd-anchor-link">⚠️ Security Notes<a href="#⚠️-security-notes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Stateless tokens cannot be revoked server-side; consider short expiry or blacklists.</li>
+<li>Always validate algorithms and keys.</li>
+<li>Use HTTPS in production.</li>
+<li>Rotate keys regularly for RS256 / ES256.</li>
+</ul>
+<hr>
+<h2 id="🤝-contributing" class="tsd-anchor-link">🤝 Contributing<a href="#🤝-contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Contributions are welcome!</p>
+<h3 id="workflow" class="tsd-anchor-link">Workflow<a href="#workflow" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+</ul>
+<pre><code class="bash"><span class="hl-1">git</span><span class="hl-2"> </span><span class="hl-3">checkout</span><span class="hl-2"> </span><span class="hl-6">-b</span><span class="hl-2"> </span><span class="hl-3">feature/my-feature</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Run tests &amp; checks</li>
+</ul>
+<pre><code class="bash"><span class="hl-1">pnpm</span><span class="hl-2"> </span><span class="hl-3">run</span><span class="hl-2"> </span><span class="hl-3">lint</span>
+</code><button type="button">Copy</button></pre>
+
+<ul>
+<li>Commit &amp; push</li>
+<li>Open a Pull Request</li>
+</ul>
+<h3 id="code-style" class="tsd-anchor-link">Code Style<a href="#code-style" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>TypeScript strict mode</li>
+<li>Enforced with ESLint + Prettier</li>
+<li>PRs must pass all CI checks before merge</li>
+</ul>
+<hr>
+<h2 id="📜-license" class="tsd-anchor-link">📜 License<a href="#📜-license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Licensed under the MIT License — see LICENSE for details.</p>
+<hr>
+<h2 id="🧭-project-structure-v0" class="tsd-anchor-link">🧭 Project Structure (v0)<a href="#🧭-project-structure-v0" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><pre><code class="text">Authjoy/
+│
+├── src/
+|   ├── auth/
+│   │   ├── strategies/
+|   |   |   └──  jwt/
+|   |   |       ├── base/
+│   │   │       |   ├── StatelessJWTStrategy.ts
+|   |   |       |   ├── errors.ts
+|   |   |       |   └── types.ts
+|   |   |       ├── extensions
+|   |   │       │   ├── CredentialBoundJWTStrategy.ts
+|   |   │       │   └── StatelessRefreshableJWTStrategy.ts
+|   |   |       └── index.ts
+|   |   ├── adapters
+|   |   |   ├── (files)
+|   |   |   └── index.ts
+|   |   ├── capabilities
+|   |   |   ├── ...
+|   |   |   └── index.ts
+|   |   └── index.ts
+│   └── index.ts
+│
+├── tests/
+│   └── units/
+|       └── auth/
+│
+├── docs/  (generated via TypeDoc)
+├── package.json
+├── tsconfig.json
+└── README.md
+</code><button type="button">Copy</button></pre>
+
+<blockquote>
+<p>💡 Example Use Cases</p>
+</blockquote>
+<ul>
+<li>API authentication using JWTs</li>
+<li>Server-to-server communication</li>
+<li>Stateless microservice authentication</li>
+<li>Building a custom auth system from composable strategies</li>
+</ul>
+<hr>
+<h2 id="🧾-credits" class="tsd-anchor-link">🧾 Credits<a href="#🧾-credits" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Developed and maintained by KodeforgeX</li>
+<li>Documentation powered by TypeDoc</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#authjoy"><span>Authjoy</span></a><ul><li><a href="#✨-features"><span>✨ <wbr/>Features</span></a></li><li><a href="#📦-installation"><span>📦 <wbr/>Installation</span></a></li><li><ul><li><a href="#once-published"><span>Once published:</span></a></li></ul></li><li><a href="#🚀-quick-start"><span>🚀 <wbr/>Quick <wbr/>Start</span></a></li><li><a href="#🧠-design-philosophy"><span>🧠 <wbr/>Design <wbr/>Philosophy</span></a></li><li><a href="#🧩-architecture-diagram"><span>🧩 <wbr/>Architecture <wbr/>Diagram</span></a></li><li><a href="#🧩-api-documentation"><span>🧩 <wbr/>API <wbr/>Documentation</span></a></li><li><ul><li><a href="#full-api-documentation-typedoc"><span>Full <wbr/>API documentation (<wbr/>Type<wbr/>Doc):</span></a></li><li><a href="#includes"><span>Includes:</span></a></li></ul></li><li><a href="#🔮-roadmap"><span>🔮 <wbr/>Roadmap</span></a></li><li><a href="#🧪-development-testing"><span>🧪 <wbr/>Development &amp; <wbr/>Testing</span></a></li><li><a href="#⚙️-continuous-integration"><span>⚙️ <wbr/>Continuous <wbr/>Integration</span></a></li><li><a href="#⚠️-security-notes"><span>⚠️ <wbr/>Security <wbr/>Notes</span></a></li><li><a href="#🤝-contributing"><span>🤝 <wbr/>Contributing</span></a></li><li><ul><li><a href="#workflow"><span>Workflow</span></a></li><li><a href="#code-style"><span>Code <wbr/>Style</span></a></li></ul></li><li><a href="#📜-license"><span>📜 <wbr/>License</span></a></li><li><a href="#🧭-project-structure-v0"><span>🧭 <wbr/>Project <wbr/>Structure (v0)</span></a></li><li><a href="#🧾-credits"><span>🧾 <wbr/>Credits</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">Authjoy - v0.0.1</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
