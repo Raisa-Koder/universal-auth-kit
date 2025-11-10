@@ -40,7 +40,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * @remarks
    * Using `protected` instead of `private` allows derived strategies
    * (such as refreshable or hybrid JWT strategies) to reuse core
-   * configuration values like  
+   * configuration values like
    * - {@link JwtConfig} fields: algorithm, secret, expiresIn,
    * without exposing them publicly.
    *
