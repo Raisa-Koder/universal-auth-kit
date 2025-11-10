@@ -40,6 +40,7 @@
     "lint:fix": "eslint --ignore-path .gitignore . --ext .js,.ts --fix",
     "lint:file": "eslint --ignore-path .gitignore",
     "lint:yaml": "chmod +x scripts/lint_yaml.sh && ./scripts/lint_yaml.sh",
+    "docs": "typedoc --entryPoints src/index.ts --out docs/api",
     "validate-typescript": "tsc -p tsconfig.prod.json --noEmit",
     "generate-dist": "tsup src/index.ts --minify --tsconfig tsconfig.prod.json --dts --format cjs,esm --out-dir dist",
     "build:clean": "rimraf dist; exit 0",
@@ -75,7 +76,8 @@
     "tsconfig-paths": "^4.2.0",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.2",
+    "typedoc": "^0.28.14",
+    "typescript": "^5.9.3",
     "unplugin-swc": "^1.5.1",
     "vite": "^5.4.12",
     "vitest": "^2.1.4"
