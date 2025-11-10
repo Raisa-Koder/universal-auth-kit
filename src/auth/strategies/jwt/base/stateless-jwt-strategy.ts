@@ -40,8 +40,8 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * @remarks
    * Using `protected` instead of `private` allows derived strategies
    * (such as refreshable or hybrid JWT strategies) to reuse core
-   * configuration values like
-   * - {@link JwtConfig} fields: algorithm, secret, expiresIn,
+   * configuration values like {@link JwtConfig.algorithm | algorithm},
+   * {@link JwtConfig.secret | secret}, and {@link JwtConfig.expiresIn | expiresIn}
    * without exposing them publicly.
    *
    * Why:
@@ -58,7 +58,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    *
    * @param rawConfig - Unvalidated configuration input.
    *
-   * @throws {Error}
+   * @throws {@link Error}
    * Thrown when configuration validation fails.
    *
    * @remarks
@@ -79,7 +79,7 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * @param payload - The claims object to embed in the token.
    * @returns The signed JWT as a compact string.
    *
-   * @throws {JWTSignError}
+   * @throws {@link JWTSignError}
    * If the signing operation fails due to key or algorithm issues.
    *
    * @remarks
@@ -106,11 +106,11 @@ export class StatelessJWTStrategy<TPayload extends JwtPayload = JwtPayload>
    * @param token - The JWT string to validate.
    * @returns The decoded payload if the token is valid.
    *
-   * @throws {JWTExpiredError}
+   * @throws {@link JWTExpiredError}
    * If the token is expired.
-   * @throws {JWTInvalidError}
+   * @throws {@link JWTInvalidError}
    * If the token is malformed or fails signature verification.
-   * @throws {JWTUnknownError}
+   * @throws {@link JWTUnknownError}
    * For unexpected verification errors.
    *
    * @remarks
