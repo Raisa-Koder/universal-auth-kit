@@ -1,0 +1,11 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "name": "Authjoy",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "hideGenerator": true,
+  "plugin": [],
+  "readme": "README.md"
+}
