@@ -129,7 +129,7 @@ Authjoy is built on the principle of strategy-based modularity:
 
 Below is a high-level representation of the current structure and the future kernel integration.
 
-```markdown
+```
                 ┌──────────────────────────┐
                 │        Authjoy v0        │
                 │ (Independent Strategies) │
@@ -139,15 +139,15 @@ Below is a high-level representation of the current structure and the future ker
         │                    │                    │
 
 ┌────────────────┐ ┌────────────────────┐ ┌────────────────────────┐
-│ StatelessJWT │ │ CredentialBoundJWT │ │ StatelessRefreshableJWT│
-│ Strategy │ │ Strategy │ │ Strategy │
+│ StatelessJWT   │ │ CredentialBoundJWT │ │ StatelessRefreshableJWT│
+│ Strategy       │ │ Strategy           │ │ Strategy               │
 └────────────────┘ └────────────────────┘ └────────────────────────┘
 
                              ▼
-                ┌──────────────────────────┐
-                │     (Future) AuthKernel   │
-                │  Manages multiple strategies │
-                └──────────────────────────┘
+                ┌─────────────────────────────┐
+                │     (Future) AuthKernel     │
+                │ Manages multiple strategies │
+                └─────────────────────────────┘
 ```
 
 ---
