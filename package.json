@@ -41,7 +41,6 @@
     "test": "vitest run --coverage",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --ext .js,.ts --fix",
-    "docs": "typedoc --entryPoints src/index.ts --out docs",
     "prepare": "[ -f .husky/install.mjs ] && node .husky/install.mjs || true",
     "typos": "chmod +x scripts/check_typos.sh && ./scripts/check_typos.sh"
   },
@@ -74,7 +73,6 @@
     "tsconfig-paths": "^4.2.0",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
-    "typedoc": "^0.28.14",
     "typescript": "^5.9.3",
     "unplugin-swc": "^1.5.1",
     "vite": "^5.4.12",
