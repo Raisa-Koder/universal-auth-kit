@@ -1,25 +1,28 @@
 {
-  "name": "universal-auth-kit",
-  "version": "0.0.1",
-  "description": "Template for new typescript libraries",
+  "name": "@kodeforgex/authjoy",
+  "version": "0.1.0-beta.1",
+  "description": "A framework-agnostic authentication toolkit for modern TypeScript projects.",
   "main": "dist/index.cjs",
   "module": "lib/index.js",
   "types": "dist/index.d.ts",
   "author": "Raisa Koder",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlbertHernandez/typescript-library-skeleton/issues"
+    "url": "https://github.com/KodeforgeX/Authjoy/issues"
   },
-  "homepage": "https://github.com/AlbertHernandez/typescript-library-skeleton#readme",
+  "homepage": "https://github.com/KodeforgeX/Authjoy#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Raisa-Koder/universal-auth-kit"
+    "url": "git+https://github.com/KodeforgeX/Authjoy"
   },
   "keywords": [
     "Authentication",
     "library",
     "Authorization",
-    "Framework-agnostic"
+    "Framework-agnostic",
+    "security",
+    "jwt",
+    "strategy"
   ],
   "engines": {
     "node": ">=20.0.0",
@@ -30,20 +33,14 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon",
-    "prepublishOnly": "pnpm i && node --run build",
-    "build": "node --run validate-typescript && node --run build:clean && node --run generate-dist",
-    "test": "rimraf coverage && node --run test:unit",
-    "build:legacy": "pnpm validate-typescript && pnpm build:clean && pnpm generate-dist",
-    "test:legacy": "rimraf coverage && pnpm test:unit",
-    "test:unit": "vitest run --coverage",
+    "prepublishOnly": "pnpm run build",
+    "build": "pnpm run validate-typescript && pnpm run build:clean && pnpm run generate-dist",
+    "build:clean": "rimraf dist || true",
+    "generate-dist": "tsup src/index.ts --minify --tsconfig tsconfig.prod.json --dts --format cjs,esm --out-dir dist",
+    "validate-typescript": "tsc -p tsconfig.prod.json --noEmit",
+    "test": "vitest run --coverage",
     "lint": "eslint src --ext .js,.ts",
     "lint:fix": "eslint src --ext .js,.ts --fix",
-    "lint:file": "eslint src",
-    "lint:yaml": "chmod +x scripts/lint_yaml.sh && ./scripts/lint_yaml.sh",
-    "docs": "typedoc --entryPoints src/index.ts --out docs",
-    "validate-typescript": "tsc -p tsconfig.prod.json --noEmit",
-    "generate-dist": "tsup src/index.ts --minify --tsconfig tsconfig.prod.json --dts --format cjs,esm --out-dir dist",
-    "build:clean": "rimraf dist; exit 0",
     "prepare": "[ -f .husky/install.mjs ] && node .husky/install.mjs || true",
     "typos": "chmod +x scripts/check_typos.sh && ./scripts/check_typos.sh"
   },
@@ -76,7 +73,6 @@
     "tsconfig-paths": "^4.2.0",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
-    "typedoc": "^0.28.14",
     "typescript": "^5.9.3",
     "unplugin-swc": "^1.5.1",
     "vite": "^5.4.12",
@@ -104,5 +100,8 @@
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
     "zod": "^4.1.12"
+  },
+  "publishConfig": {
+    "tag": "beta"
   }
 }
