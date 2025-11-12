@@ -1,0 +1,1 @@
+import{_ as e,c as a,o,ae as r}from"./chunks/framework.B_owRgTZ.js";const h=JSON.parse('{"title":"Authjoy","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),n={name:"index.md"};function i(s,t,l,d,p,c){return o(),a("div",null,[...t[0]||(t[0]=[r("",8)])])}const _=e(n,[["render",i]]);export{h as __pageData,_ as default};
