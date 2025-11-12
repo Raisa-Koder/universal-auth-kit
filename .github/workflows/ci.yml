@@ -1,0 +1,142 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - main
+
+jobs:
+  lint-type-test:
+    name: Lint, Typecheck, Test, and Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup pnpm
+        run: corepack prepare pnpm@8.8.0 --activate
+
+      - name: Verify pnpm
+        run: |
+          which pnpm
+          pnpm -v
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run TypeScript type check
+        run: pnpm validate-typescript
+
+      - name: Run unit tests with coverage
+        run: pnpm test
+
+      - name: Parse coverage summary
+        id: coverage
+        run: |
+          COVERAGE_FILE="coverage/unit/coverage-summary.json"
+          if [ ! -f "$COVERAGE_FILE" ]; then
+            echo "❌ Coverage summary not found at $COVERAGE_FILE"
+            exit 1
+          fi
+
+          LINES=$(jq '.total.lines.pct' $COVERAGE_FILE)
+          FUNCTIONS=$(jq '.total.functions.pct' $COVERAGE_FILE)
+          STATEMENTS=$(jq '.total.statements.pct' $COVERAGE_FILE)
+          BRANCHES=$(jq '.total.branches.pct' $COVERAGE_FILE)
+
+          echo "lines=$LINES" >> $GITHUB_OUTPUT
+          echo "functions=$FUNCTIONS" >> $GITHUB_OUTPUT
+          echo "statements=$STATEMENTS" >> $GITHUB_OUTPUT
+          echo "branches=$BRANCHES" >> $GITHUB_OUTPUT
+
+      - name: Check coverage thresholds
+        run: |
+          MIN_LINES=90
+          MIN_FUNCTIONS=90
+          MIN_STATEMENTS=90
+          MIN_BRANCHES=80
+
+          echo "Checking coverage thresholds..."
+          if (( $(echo "${{ steps.coverage.outputs.lines }} < $MIN_LINES" | bc -l) )); then
+            echo "❌ Lines coverage too low: ${{ steps.coverage.outputs.lines }}% < $MIN_LINES%"
+            exit 1
+          fi
+          if (( $(echo "${{ steps.coverage.outputs.functions }} < $MIN_FUNCTIONS" | bc -l) )); then
+            echo "❌ Functions coverage too low: ${{ steps.coverage.outputs.functions }}% < $MIN_FUNCTIONS%"
+            exit 1
+          fi
+          if (( $(echo "${{ steps.coverage.outputs.statements }} < $MIN_STATEMENTS" | bc -l) )); then
+            echo "❌ Statements coverage too low: ${{ steps.coverage.outputs.statements }}% < $MIN_STATEMENTS%"
+            exit 1
+          fi
+          if (( $(echo "${{ steps.coverage.outputs.branches }} < $MIN_BRANCHES" | bc -l) )); then
+            echo "❌ Branches coverage too low: ${{ steps.coverage.outputs.branches }}% < $MIN_BRANCHES%"
+            exit 1
+          fi
+          echo "✅ All coverage thresholds met"
+
+      - name: Update coverage comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }} # <- use your PAT here
+          script: |
+            const lines = process.env.LINES;
+            const functions = process.env.FUNCTIONS;
+            const statements = process.env.STATEMENTS;
+            const branches = process.env.BRANCHES;
+
+            const body = `
+                🧪 **Vitest Coverage Summary**:
+
+                | Metric      | Coverage |
+                |------------|---------|
+                | Lines      | ${lines}% |
+                | Functions  | ${functions}% |
+                | Statements | ${statements}% |
+                | Branches   | ${branches}% |
+                `;
+
+            const comments = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const coverageComment = comments.data.find(c => c.body.includes('**Vitest Coverage Summary**'));
+
+            if (coverageComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: coverageComment.id,
+                body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body
+              });
+            }
+        env:
+          LINES: ${{ steps.coverage.outputs.lines }}
+          FUNCTIONS: ${{ steps.coverage.outputs.functions }}
+          STATEMENTS: ${{ steps.coverage.outputs.statements }}
+          BRANCHES: ${{ steps.coverage.outputs.branches }}
