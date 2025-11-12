@@ -4,3 +4,5 @@ dist/
 .idea
 .env
 coverage/
+docs/.vitepress/dist
+docs/.vitepress/cache
