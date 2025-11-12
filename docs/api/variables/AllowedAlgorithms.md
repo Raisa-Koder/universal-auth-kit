@@ -8,4 +8,4 @@
 
 > `const` **AllowedAlgorithms**: `Algorithm`[]
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:6](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/types.ts#L6)
+Defined in: [src/auth/strategies/jwt/base/types.ts:6](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L6)

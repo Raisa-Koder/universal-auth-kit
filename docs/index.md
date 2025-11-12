@@ -11,4 +11,7 @@ Authjoy helps you implement modular, flexible authentication flows using strateg
 ---
 
 📖 **Get started:** [Guide →](./guide/getting-started)
+
+---
+
 📖 **Concepts:** [Concepts →](./concept/extending)

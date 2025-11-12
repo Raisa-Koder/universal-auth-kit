@@ -6,7 +6,7 @@
 
 # Interface: CredentialBoundJWTCredentials
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:32](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/types.ts#L32)
+Defined in: [src/auth/strategies/jwt/base/types.ts:32](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L32)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:32](https://github.com/kodefo
 
 > **identifier**: `string`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:33](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/types.ts#L33)
+Defined in: [src/auth/strategies/jwt/base/types.ts:33](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L33)
 
 ---
 
@@ -22,7 +22,7 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:33](https://github.com/kodefo
 
 > **password**: `string`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:34](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/types.ts#L34)
+Defined in: [src/auth/strategies/jwt/base/types.ts:34](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L34)
 
 ---
 
@@ -30,4 +30,4 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:34](https://github.com/kodefo
 
 > `optional` **runtimeClaims**: `Record`\<`string`, `unknown`\>
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:35](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/types.ts#L35)
+Defined in: [src/auth/strategies/jwt/base/types.ts:35](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L35)
