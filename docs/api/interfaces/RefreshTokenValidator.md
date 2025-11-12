@@ -6,7 +6,7 @@
 
 # Interface: RefreshTokenValidator\<TResult\>
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:1](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/capabilities/token/refresh-capability.ts#L1)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:1](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/capabilities/token/refresh-capability.ts#L1)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [src/auth/capabilities/token/refresh-capability.ts:1](https://github
 
 > **validateRefreshToken**(`token`): `Promise`\<`TResult`\>
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:2](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/capabilities/token/refresh-capability.ts#L2)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:2](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/capabilities/token/refresh-capability.ts#L2)
 
 #### Parameters
 

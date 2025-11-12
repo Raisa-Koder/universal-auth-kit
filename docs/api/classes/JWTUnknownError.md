@@ -6,7 +6,7 @@
 
 # Class: JWTUnknownError
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:37](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/errors.ts#L37)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:37](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/errors.ts#L37)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:37](https://github.com/kodef
 
 > **new JWTUnknownError**(`cause?`): `JWTUnknownError`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:38](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/errors.ts#L38)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:38](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/errors.ts#L38)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:38](https://github.com/kodef
 
 > `optional` **cause**: `Error`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/errors.ts#L5)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/errors.ts#L5)
 
 #### Inherited from
 
@@ -52,7 +52,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodefo
 
 > **code**: `string` = `"JWT_ERROR"`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:4](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/errors.ts#L4)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:4](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/errors.ts#L4)
 
 #### Inherited from
 

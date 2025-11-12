@@ -6,7 +6,7 @@
 
 # Class: CredentialBoundJWTStrategy\<TUser, TPayload\>
 
-Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:19](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L19)
+Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:19](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L19)
 
 Credential-bound JWT strategy that delegates authentication to a user adapter.
 
@@ -37,7 +37,7 @@ The strategy only signs whatever the adapter returns + optional runtime claims.
 
 > **new CredentialBoundJWTStrategy**\<`TUser`, `TPayload`\>(`config`, `userAdapter`): `CredentialBoundJWTStrategy`\<`TUser`, `TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:30](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L30)
+Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:30](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L30)
 
 #### Parameters
 
@@ -63,7 +63,7 @@ Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts
 
 > `protected` **config**: `object`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
 
 The validated JWT configuration accessible to subclasses.
 
@@ -114,7 +114,7 @@ Why:
 
 > **authenticate**(`credentials`): `Promise`\<\{ `token`: `string`; `user`: `TUser`; \}\>
 
-Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:43](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L43)
+Defined in: [src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts:43](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/extensions/credential-bound-jwt-strategy.ts#L43)
 
 Authenticate a user and generate a JWT.
 
@@ -151,7 +151,7 @@ runtimeClaims are optional, per-request flags or temporary info.
 
 > **generateToken**(`payload`): `string`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
 
 Generates a signed JWT access token.
 
@@ -188,7 +188,7 @@ to maintain consistent identity boundaries across tokens.
 
 > **validateToken**(`token`): `Promise`\<`TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
 
 Validates a provided JWT and returns its decoded payload.
 

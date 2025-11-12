@@ -6,7 +6,7 @@
 
 # Interface: RefreshTokenIssuer\<TResult\>
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:5](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/capabilities/token/refresh-capability.ts#L5)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:5](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/capabilities/token/refresh-capability.ts#L5)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [src/auth/capabilities/token/refresh-capability.ts:5](https://github
 
 > **generateRefreshToken**(`payload`): `string`
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:6](https://github.com/kodeforgeX/Authjoy/blob/80b2e2b883dba425c0722aa482e5007faaac7300/src/auth/capabilities/token/refresh-capability.ts#L6)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:6](https://github.com/kodeforgeX/Authjoy/blob/cf4486079614c9dd907fbc93cafdb95c4a96bf30/src/auth/capabilities/token/refresh-capability.ts#L6)
 
 #### Parameters
 
