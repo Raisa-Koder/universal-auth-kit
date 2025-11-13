@@ -3,6 +3,8 @@ name: Feature Request
 about: Suggest a new feature or enhancement for Authjoy
 title: "[Feature] <short description>"
 labels: enhancement
+assignees: ''
+
 ---
 
 ## Motivation
