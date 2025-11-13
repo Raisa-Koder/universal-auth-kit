@@ -1,6 +1,7 @@
-# Authjoy
+🔐 Authjoy: Authentication Without Reinvention
 
-> **Lightweight, modular, and extendable authentication strategies for Node.js**
+Authjoy is a modular, framework-agnostic authentication system for Node.js and JavaScript projects. It provides a clean, strongly typed API to handle authentication across any stack — Express, NestJS, Next.js, or custom — using strategies like JWT, OAuth, and sessions. You can swap, extend, or compose strategies without touching business logic.
+
 
 [![Build](https://github.com/kodeforgeX/Authjoy/actions/workflows/ci.yml/badge.svg)](https://github.com/kodeforgeX/Authjoy/actions)
 [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://kodeforgex.github.io/Authjoy/)
@@ -16,37 +17,19 @@ It’s built around **modular strategies**, designed to separate authentication 
 ---
 
 ## ✨ Features
-
-- ✅ Stateless, modular authentication strategies
-- 🔐 Strongly typed with TypeScript
-- ⚙️ Framework-agnostic design
-- 🧩 Easy to extend with custom strategies
-- 🧪 CI/CD with Vitest for automated testing
-- 🧱 Clean code style via ESLint + Prettier
-- 📘 Full [TypeDoc documentation](https://kodeforgex.github.io/Authjoy/)
+- Framework-agnostic: Works with any Node.js environment.
+- Modular strategies: JWT, OAuth, API key, and more.
+- Strong TypeScript support: Typed APIs and config schemas.
+- Stateless and session-based options: Choose what fits your app.
+- Composable architecture: Future support for AuthKernel orchestration.
+- Clean separation of concerns: Auth logic stays out of business logic.
 
 ---
 
 ## 📦 Installation
 
-> The package is not yet published on npm.  
-> Clone or install it locally until release.
-
 ```bash
-# Clone the repository
-git clone https://github.com/kodeforgeX/Authjoy.git
-
-# Navigate to the project
-cd Authjoy
-
-# Install dependencies
-pnpm install
-```
-
-### Once published:
-
-```bash
-npm install authjoy
+npm install @kodeforgex/authjoy
 ```
 
 ---
