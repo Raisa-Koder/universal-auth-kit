@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / CredentialAuthenticator
+[authjoy](../README.md) / CredentialAuthenticator
 
 # Interface: CredentialAuthenticator\<TCredentials, TResult\>
 
-Defined in: [src/auth/capabilities/core/authenticate-capability.ts:1](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/capabilities/core/authenticate-capability.ts#L1)
+Defined in: [src/auth/capabilities/core/authenticate-capability.ts:1](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/capabilities/core/authenticate-capability.ts#L1)
 
 ## Type Parameters
 
@@ -24,7 +24,7 @@ Defined in: [src/auth/capabilities/core/authenticate-capability.ts:1](https://gi
 
 > **authenticate**(`credentials`): `Promise`\<`TResult`\>
 
-Defined in: [src/auth/capabilities/core/authenticate-capability.ts:2](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/capabilities/core/authenticate-capability.ts#L2)
+Defined in: [src/auth/capabilities/core/authenticate-capability.ts:2](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/capabilities/core/authenticate-capability.ts#L2)
 
 #### Parameters
 

@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / RefreshTokenPayload
+[authjoy](../README.md) / RefreshTokenPayload
 
 # Interface: RefreshTokenPayload
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:18](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L18)
+Defined in: [src/auth/strategies/jwt/base/types.ts:18](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L18)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:18](https://github.com/kodefo
 
 > **sub**: `string`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:19](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L19)
+Defined in: [src/auth/strategies/jwt/base/types.ts:19](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L19)
 
 ---
 
@@ -22,4 +22,4 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:19](https://github.com/kodefo
 
 > **type**: `"refresh"`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:20](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L20)
+Defined in: [src/auth/strategies/jwt/base/types.ts:20](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L20)

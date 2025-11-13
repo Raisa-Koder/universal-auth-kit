@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / StatelessJWTStrategy
+[authjoy](../README.md) / StatelessJWTStrategy
 
 # Class: StatelessJWTStrategy\<TPayload\>
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:33](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L33)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:33](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L33)
 
 Provides a stateless JSON Web Token (JWT) authentication mechanism.
 
@@ -49,7 +49,7 @@ The expected shape of the token payload.
 
 > **new StatelessJWTStrategy**\<`TPayload`\>(`rawConfig`): `StatelessJWTStrategy`\<`TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:68](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L68)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:68](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L68)
 
 Creates a new stateless JWT strategy instance.
 
@@ -80,7 +80,7 @@ or incomplete settings cannot propagate to runtime.
 
 > `protected` **config**: `object`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
 
 The validated JWT configuration accessible to subclasses.
 
@@ -127,7 +127,7 @@ Why:
 
 > **generateToken**(`payload`): `string`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
 
 Generates a signed JWT access token.
 
@@ -164,7 +164,7 @@ to maintain consistent identity boundaries across tokens.
 
 > **validateToken**(`token`): `Promise`\<`TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
 
 Validates a provided JWT and returns its decoded payload.
 

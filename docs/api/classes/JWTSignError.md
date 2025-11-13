@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / JWTSignError
+[authjoy](../README.md) / JWTSignError
 
 # Class: JWTSignError
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:31](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/errors.ts#L31)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:31](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/errors.ts#L31)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:31](https://github.com/kodef
 
 > **new JWTSignError**(`cause?`): `JWTSignError`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:32](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/errors.ts#L32)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:32](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/errors.ts#L32)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:32](https://github.com/kodef
 
 > `optional` **cause**: `Error`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/errors.ts#L5)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/errors.ts#L5)
 
 #### Inherited from
 
@@ -52,7 +52,7 @@ Defined in: [src/auth/strategies/jwt/base/errors.ts:5](https://github.com/kodefo
 
 > **code**: `string` = `"JWT_ERROR"`
 
-Defined in: [src/auth/strategies/jwt/base/errors.ts:4](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/errors.ts#L4)
+Defined in: [src/auth/strategies/jwt/base/errors.ts:4](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/errors.ts#L4)
 
 #### Inherited from
 

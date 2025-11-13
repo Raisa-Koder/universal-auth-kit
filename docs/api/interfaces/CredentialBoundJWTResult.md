@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / CredentialBoundJWTResult
+[authjoy](../README.md) / CredentialBoundJWTResult
 
 # Interface: CredentialBoundJWTResult\<TUser\>
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:38](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L38)
+Defined in: [src/auth/strategies/jwt/base/types.ts:38](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L38)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:38](https://github.com/kodefo
 
 > **token**: `string`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:41](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L41)
+Defined in: [src/auth/strategies/jwt/base/types.ts:41](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L41)
 
 ---
 
@@ -28,4 +28,4 @@ Defined in: [src/auth/strategies/jwt/base/types.ts:41](https://github.com/kodefo
 
 > **user**: `TUser`
 
-Defined in: [src/auth/strategies/jwt/base/types.ts:42](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/types.ts#L42)
+Defined in: [src/auth/strategies/jwt/base/types.ts:42](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/types.ts#L42)

@@ -1,8 +1,8 @@
-**@kodeforgex/authjoy**
+**authjoy**
 
 ---
 
-# @kodeforgex/authjoy
+# authjoy
 
 ## Classes
 

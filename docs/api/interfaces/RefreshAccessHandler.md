@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / RefreshAccessHandler
+[authjoy](../README.md) / RefreshAccessHandler
 
 # Interface: RefreshAccessHandler\<TAccess, TRefresh\>
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:9](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/capabilities/token/refresh-capability.ts#L9)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:9](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/capabilities/token/refresh-capability.ts#L9)
 
 ## Type Parameters
 
@@ -24,7 +24,7 @@ Defined in: [src/auth/capabilities/token/refresh-capability.ts:9](https://github
 
 > **refreshAccess**(`refreshToken`, `accessPayload`): `Promise`\<\{ `accessToken`: `string`; `refreshToken`: `string`; \}\>
 
-Defined in: [src/auth/capabilities/token/refresh-capability.ts:10](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/capabilities/token/refresh-capability.ts#L10)
+Defined in: [src/auth/capabilities/token/refresh-capability.ts:10](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/capabilities/token/refresh-capability.ts#L10)
 
 #### Parameters
 

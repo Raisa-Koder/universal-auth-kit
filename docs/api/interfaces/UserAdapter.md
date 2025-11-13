@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / UserAdapter
+[authjoy](../README.md) / UserAdapter
 
 # Interface: UserAdapter\<TUser\>
 
-Defined in: [src/auth/adapters/user-adapter.ts:1](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/adapters/user-adapter.ts#L1)
+Defined in: [src/auth/adapters/user-adapter.ts:1](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/adapters/user-adapter.ts#L1)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [src/auth/adapters/user-adapter.ts:1](https://github.com/kodeforgeX/
 
 > **validateUser**(`identifier`, `secret`): `Promise`\<`TUser` \| `null`\>
 
-Defined in: [src/auth/adapters/user-adapter.ts:2](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/adapters/user-adapter.ts#L2)
+Defined in: [src/auth/adapters/user-adapter.ts:2](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/adapters/user-adapter.ts#L2)
 
 #### Parameters
 

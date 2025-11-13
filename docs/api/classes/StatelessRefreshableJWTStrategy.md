@@ -1,12 +1,12 @@
-[**@kodeforgex/authjoy**](../README.md)
+[**authjoy**](../README.md)
 
 ---
 
-[@kodeforgex/authjoy](../README.md) / StatelessRefreshableJWTStrategy
+[authjoy](../README.md) / StatelessRefreshableJWTStrategy
 
 # Class: StatelessRefreshableJWTStrategy\<TPayload\>
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:29](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L29)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:29](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L29)
 
 Stateless JWT strategy with refresh token support.
 
@@ -37,7 +37,7 @@ Type of the main access token payload
 
 > **new StatelessRefreshableJWTStrategy**\<`TPayload`\>(`rawConfig`): `StatelessRefreshableJWTStrategy`\<`TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:48](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L48)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:48](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L48)
 
 Initialize the strategy with configuration.
 
@@ -64,7 +64,7 @@ a compromise of one token type does not affect the other.
 
 > `protected` **config**: `object`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:54](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L54)
 
 The validated JWT configuration accessible to subclasses.
 
@@ -115,7 +115,7 @@ Why:
 
 > `protected` **refreshExpiresIn**: `string`
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:40](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L40)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:40](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L40)
 
 Expiration time for refresh tokens
 
@@ -125,7 +125,7 @@ Expiration time for refresh tokens
 
 > `protected` **refreshSecret**: `Secret`
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:37](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L37)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:37](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L37)
 
 Secret used specifically for signing refresh tokens
 
@@ -135,7 +135,7 @@ Secret used specifically for signing refresh tokens
 
 > **generateRefreshToken**(`userId`): `string`
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:78](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L78)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:78](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L78)
 
 Generate a signed refresh token for a user.
 
@@ -167,7 +167,7 @@ Signed JWT refresh token
 
 > **generateToken**(`payload`): `string`
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:89](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L89)
 
 Generates a signed JWT access token.
 
@@ -204,7 +204,7 @@ to maintain consistent identity boundaries across tokens.
 
 > **refreshAccess**(`accessPayload`, `refreshToken`): `Promise`\<\{ `accessToken`: `string`; `refreshToken`: `string`; \}\>
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:139](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L139)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:139](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L139)
 
 Rotate tokens: generate a new access token and refresh token pair.
 
@@ -241,7 +241,7 @@ Object containing the new access token and refresh token
 
 > **validateRefreshToken**(`token`): `Promise`\<[`RefreshTokenPayload`](../interfaces/RefreshTokenPayload.md)\>
 
-Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:102](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L102)
+Defined in: [src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts:102](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/extensions/stateless-refreshable-jwt-strategy.ts#L102)
 
 Validate a refresh token and ensure its type is correct.
 
@@ -276,7 +276,7 @@ JWTExpiredError | JWTInvalidError
 
 > **validateToken**(`token`): `Promise`\<`TPayload`\>
 
-Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/b37313b44562648422bdce1d52ec0bfe19751bcd/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
+Defined in: [src/auth/strategies/jwt/base/stateless-jwt-strategy.ts:122](https://github.com/kodeforgeX/Authjoy/blob/097214837c1009862ed784f7af8795796b3d324c/src/auth/strategies/jwt/base/stateless-jwt-strategy.ts#L122)
 
 Validates a provided JWT and returns its decoded payload.
 
