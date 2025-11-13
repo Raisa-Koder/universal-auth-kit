@@ -5,6 +5,7 @@ Authjoy is a modular, framework-agnostic authentication system for Node.js and J
 [![Build](https://github.com/kodeforgeX/Authjoy/actions/workflows/ci.yml/badge.svg)](https://github.com/kodeforgeX/Authjoy/actions)
 [![Docs](https://img.shields.io/badge/docs-typedoc-blue)](https://kodeforgex.github.io/Authjoy/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE.md)
+[![npm](https://img.shields.io/npm/v/my-awesome-package.svg)](https://www.npmjs.com/package/authjoy)
 
 Authjoy provides a clean and extensible foundation for handling authentication in your applications.  
 It’s built around **modular strategies**, designed to separate authentication concerns from business logic, while staying framework-agnostic and strongly typed.
