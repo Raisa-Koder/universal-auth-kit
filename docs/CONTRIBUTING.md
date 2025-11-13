@@ -1,19 +1,34 @@
-## 👏 Contributing
+# Contributing to Authjoy
 
-As a contributor, here are the guidelines you should follow:
+Thanks for your interest in contributing to Authjoy! We welcome bug reports, feature requests, and pull requests.
 
-- [👔 Code of Conduct](CODE_OF_CONDUCT.md)
-- [⭐️ Steps](#-steps)
+## 🐞 Reporting Bugs
+
+If you find a bug, please use our [Bug Report template](.github/ISSUE_TEMPLATE/bug_report.md). Include as much detail as possible so we can reproduce and fix the issue quickly.
+
+## ✨ Requesting Features
+
+Have an idea for a new feature or improvement? Submit it using our [Feature Request template](.github/ISSUE_TEMPLATE/feature_request.md). We value thoughtful suggestions that align with Authjoy’s modular design.
+
+## ✅ Submitting Pull Requests
+
+Before submitting a pull request, please:
+
+- Fork the repository
+- Create a new branch (`git checkout -b feature/my-feature`)
+- Follow our coding standards and linting rules
+- Use our [Pull Request template](.github/PULL_REQUEST_TEMPLATE.md) to describe your changes
+
+## 📋 Code Style & Testing
+
+- Use TypeScript with strict typing
+- Run `npm run lint` and `npm test` before submitting
+- Include unit tests for new features or bug fixes
+
+## 💬 Questions or Help
+
+Open a discussion or reach out via issues if you need guidance.
 
 ---
 
-## ⭐️ Steps
-
-1. Use the issue tracker to make sure the feature request or bug has not been already reported 🔎.
-2. Submit an issue describing your proposed change to the repo 💡.
-3. The repo owner will respond to your issue as soon as we can 💪.
-4. If your proposal change is accepted, fork the repo, develop and test your code changes 🤝.
-5. Ensure that your code adheres to the existing style in the code 💅🏻.
-6. Title your pull request following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) styling 🪄.
-
----
+Happy coding! 🎉
