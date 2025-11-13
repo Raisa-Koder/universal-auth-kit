@@ -1,4 +1,4 @@
-🔐 Authjoy: Authentication Without Reinvention
+# 🔐 Authjoy: Authentication Without Reinvention
 
 Authjoy is a modular, framework-agnostic authentication system for Node.js and JavaScript projects. It provides a clean, strongly typed API to handle authentication across any stack — Express, NestJS, Next.js, or custom — using strategies like JWT, OAuth, and sessions. You can swap, extend, or compose strategies without touching business logic.
 
