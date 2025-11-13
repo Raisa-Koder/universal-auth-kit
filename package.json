@@ -1,5 +1,5 @@
 {
-  "name": "@kodeforgex/authjoy",
+  "name": "authjoy",
   "version": "0.1.0-beta.1",
   "description": "A framework-agnostic authentication toolkit for modern TypeScript projects.",
   "main": "dist/index.cjs",
