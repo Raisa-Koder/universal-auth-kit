@@ -17,12 +17,10 @@
     },
     {
       "type": "chore",
-      "hidden": true,
       "section": "🧹 Chore"
     },
     {
       "type": "docs",
-      "hidden": true,
       "section": "📚 Documentation"
     },
     {
@@ -31,7 +29,6 @@
     },
     {
       "type": "build",
-      "hidden": true,
       "section": "🛠️ Build"
     },
     {
@@ -40,7 +37,6 @@
     },
     {
       "type": "ci",
-      "hidden": true,
       "section": "🚦 CI"
     },
     {
